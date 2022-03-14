@@ -1,0 +1,35 @@
+.login form .container {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.login form .container .title h2 {
+  font-size: 36px;
+  color: #0a093d;
+}
+.login form .container .title h5 {
+  color: #217bf4;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+.login form .container .cont {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  max-width: 95%;
+}
+
+.login form .container .btn {
+  width: 350px;
+  max-width: 95%;
+}
+.login form .container p {
+  margin: 15px 0;
+  font-size: 14px;
+  color: #A1A1A1;
+}
+.login form .container .btn:last-of-type {
+  background-color: #3F3D56;
+}
