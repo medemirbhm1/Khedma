@@ -1,0 +1,81 @@
+.signup form .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  padding-bottom: 50px;
+}
+.signup form .container.chose {
+  flex-direction: row;
+  justify-content: space-between;
+}
+.signup form .container h2 {
+  font-size: 36px;
+  color: #0a093d;
+  margin-bottom: 50px;
+}
+.signup form .container.chose h2 {
+  margin-bottom: 30px;
+}
+.signup form .container .choices {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px 100px;
+}
+.signup form .container .choices .choice {
+  border-radius: 8px;
+  padding: 22px;
+  box-shadow: 0 4px 14px rgb(0 0 0 / 10%);
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+.signup form .container .choices .choice:hover {
+  box-shadow: 0 4px 14px rgb(0 0 0 / 20%);
+  transform: scale(1.01);
+}
+.signup form .container .choices h3 {
+  text-align: center;
+  color: #3f3d56;
+  margin-top: 20px;
+  font-size: 30px;
+  font-weight: 600;
+}
+.signup form .container .choices .choice img {
+  width: 250px;
+  height: 250px;
+}
+.signup form .container.chose .left {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+}
+.signup form .container.chose .row  {
+  display: flex;
+  column-gap: 30px;
+  flex-wrap: wrap;
+}
+.signup form .container .input[type="date"]{
+  font-family: inherit;
+  color: #3f3d56;
+}
+.signup form .container .input[type="password"],
+.signup form .container .input[type="email"]{
+  width: 300px;
+  max-width: 100%;
+}
+.signup form .container.chose .btn  {
+  width: 420px;
+  max-width: 100%;
+}
+.signup form .container.chose img {
+  width: 400px;
+}
+@media (max-width: 991px) {
+    .signup form .container.chose {
+      justify-content: center;
+    }
+  .signup form .container.chose img {
+    display: none;
+  }
+}

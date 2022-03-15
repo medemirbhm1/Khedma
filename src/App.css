@@ -15,6 +15,7 @@
   font-weight: 600;
   color: #0a093d;
   margin-bottom: 7px;
+  display: block;
 }
 .input {
   border: 1px solid #ded2d9;
