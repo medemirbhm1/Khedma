@@ -3,7 +3,7 @@ import logo from "./img/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
-import homeImg from "./img/Iamge.png";
+import landImg from "./img/Iamge.png";
 import aboutImg from "./img/undraw_co-working_re_w93t.svg";
 import featImg1 from "./img/Icon.svg";
 import featImg2 from "./img/Icon (2).svg";
@@ -29,7 +29,7 @@ function Landing() {
     alert("Copied the text: " + window.location.href);
   }
   return (
-    <div>
+    <div className="landing">
       <div className="header">
         {/* NAVBAR */}
         <nav>
@@ -64,8 +64,8 @@ function Landing() {
             </div>
           </div>
         </nav>
-        {/* HOME */}
-        <div className="home">
+        {/* land */}
+        <div className="land">
           <div className="container">
             <div className="text">
               <h1>
@@ -82,7 +82,7 @@ function Landing() {
                 </button>
               </div>
             </div>
-            <img src={homeImg} alt="" />
+            <img src={landImg} alt="" />
           </div>
         </div>
       </div>

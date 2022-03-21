@@ -1,0 +1,32 @@
+.result .head {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: 2px solid #E4E2E0;
+    padding-bottom: 15px;
+}
+.result .head .choice {
+    font-size: 20px;
+    cursor: pointer;
+}
+.result .head .choice.chosen {
+    font-weight: 600;
+    position: relative;
+}
+.result .head .choice.chosen::before {
+    content: "";
+    width: 130%;
+    height: 3px;
+    position: absolute;
+    bottom: -15.5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #217bf4;
+}
+.result .container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.result .container .job {
+}

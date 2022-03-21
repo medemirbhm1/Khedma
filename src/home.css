@@ -1,0 +1,47 @@
+.home nav .container {
+  justify-content: space-between;
+}
+.home nav .container .buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.home nav .container .buttons .btn:last-child {
+  background-color: transparent;
+  color: #217bf4;
+  border: 1px solid #217bf4;
+}
+.home .search .container {
+  padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.home .search .container form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+.home .search .container form .cont {
+  display: flex;
+  align-items: center;
+  border: 1px solid #949494;
+  border-radius: 6px;
+  margin-bottom: 30px;
+  max-width: 90%;
+  width: 400px;  
+}
+.home .search .container form .cont label {
+    font-size: 14px;
+    padding-left: 15px;
+    font-weight: 600;
+}
+.home .search .container form .cont .input {
+    margin: 0;
+    border: 0;
+}
+.home .search .container form .cont .input::placeholder {
+    font-weight: 500;
+    color: #C0C0C0;
+}

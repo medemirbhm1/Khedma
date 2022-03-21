@@ -1,9 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "./img/logo.png";
 import "./login.css";
+import {
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+} from "firebase/auth";
+
+import { auth } from "./firebase";
 
 function Login() {
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+
+  const [user, setUser] = useState({});
+
+  onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser);
+  });
+
+  const login = async () => {
+    try {
+      const user = await signInWithEmailAndPassword(
+        auth,
+        loginEmail,
+        loginPassword
+      );
+      alert("email valide");
+      console.log(user);
+    } catch (error) {
+      alert(" existe pas");
+      console.log(error.message);
+    }
+  };
   const navigate = useNavigate("");
   return (
     <div className="login">
@@ -25,15 +54,31 @@ function Login() {
             <label className="label" htmlFor="email">
               Email
             </label>
-            <input className="input" type="email" id="email" />
+            <input
+              className="input"
+              type="email"
+              id="email"
+              onChange={(event) => {
+                setLoginEmail(event.target.value);
+              }}
+            />
           </div>
           <div className="cont">
             <label className="label" htmlFor="password">
               Password
             </label>
-            <input className="input" type="password" id="password" />
+            <input
+              className="input"
+              type="password"
+              id="password"
+              onChange={(event) => {
+                setLoginPassword(event.target.value);
+              }}
+            />
           </div>
-          <button className="btn">Login</button>
+          <button className="btn" onClick={login} type="button">
+            Login
+          </button>
           <p>New to Khedma ?</p>
           <button
             type="button"
@@ -47,5 +92,4 @@ function Login() {
     </div>
   );
 }
-
 export default Login;

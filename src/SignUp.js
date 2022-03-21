@@ -4,9 +4,83 @@ import choice1 from "./img/undraw_personal_file_re_5joy.svg";
 import choice2 from "./img/undraw_quite_town_mg2q.svg";
 import "./signUp.css";
 import logo from "./img/logo.png";
-import signup1 from "./img/undraw_my_password_re_ydq7.svg"
-import signup2 from "./img/undraw_profile_details_re_ch9r.svg"
+import signup1 from "./img/undraw_my_password_re_ydq7.svg";
+import signup2 from "./img/undraw_profile_details_re_ch9r.svg";
+import { database } from "./firebase";
+import { setDoc, doc } from "firebase/firestore";
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+} from "firebase/auth";
+import { auth } from "./firebase";
+
 function SignUp() {
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+  const [registerlastname, setRegisterlastname] = useState("");
+  const [registerfirstname, setRegisterfirstname] = useState("");
+  const [registerbirthday, setRegisterbirthday] = useState("");
+  const [user, setUser] = useState({});
+
+  onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser);
+  });
+  //registre_user :
+  const registeruser = async () => {
+    try {
+      const user = await createUserWithEmailAndPassword(
+        auth,
+        registerEmail,
+        registerPassword
+      ).then((userCredential) => {
+        console.log(userCredential);
+        const user = userCredential.user;
+
+        setDoc(doc(database, "users", user.uid), {
+          //addDoc((database , 'users'+ user.uid),{
+
+          Email: user.email,
+          lastname: registerlastname,
+          firstname: registerfirstname,
+          birthday: registerbirthday,
+          create_date: new Date().getTime(),
+          date: new Date().getDate(),
+        });
+      });
+
+      alert("user created");
+      console.log(user);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+  //registre_company :
+  const registercompany = async () => {
+    try {
+      const user = await createUserWithEmailAndPassword(
+        auth,
+        registerEmail,
+        registerPassword
+      ).then((userCredential) => {
+        console.log(userCredential);
+        const user = userCredential.user;
+
+        setDoc(doc(database, "users", user.uid), {
+          Email: user.email,
+          companyname: registerlastname,
+          Location: registerfirstname,
+          date_de_creation: registerbirthday,
+          create_date: new Date().getTime(),
+          date: new Date().getDate(),
+        });
+      });
+      alert("user created");
+      console.log(user);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   const [chose, setChose] = useState(false);
   const [comp, setComp] = useState(false);
   const navigate = useNavigate();
@@ -61,28 +135,67 @@ function SignUp() {
                     <label className="label" htmlFor="first">
                       {comp ? "Company Name" : "First Name"}
                     </label>
-                    <input id="first" className="input" type="text" />
+                    <input
+                      id="first"
+                      className="input"
+                      type="text"
+                      onChange={(event) => {
+                        setRegisterfirstname(event.target.value);
+                      }}
+                    />
                   </div>
                   <div>
                     <label className="label" htmlFor="second">
                       {comp ? "Location" : "Last Name"}
                     </label>
-                    <input id="second" className="input" type="text" />
+                    <input
+                      id="second"
+                      className="input"
+                      type="text"
+                      onChange={(event) => {
+                        setRegisterlastname(event.target.value);
+                      }}
+                    />
                   </div>
                 </div>
                 <label className="label" htmlFor="third">
                   {comp ? "Creation Date" : "Birthdate"}
                 </label>
-                <input id="third" className="input" type="date" />
+                <input
+                  id="third"
+                  className="input"
+                  type="date"
+                  onChange={(event) => {
+                    setRegisterbirthday(event.target.value);
+                  }}
+                />
                 <label className="label" htmlFor="fourth">
                   Email
                 </label>
-                <input id="fourth" className="input" type="email" />
+                <input
+                  id="fourth"
+                  className="input"
+                  type="email"
+                  onChange={(event) => {
+                    setRegisterEmail(event.target.value);
+                  }}
+                />
                 <label className="label" htmlFor="fifth">
                   Password
                 </label>
-                <input id="fifth" className="input" type="password" />
-                <button className="btn" type="button">
+                <input
+                  id="fifth"
+                  className="input"
+                  type="password"
+                  onChange={(event) => {
+                    setRegisterPassword(event.target.value);
+                  }}
+                />
+                <button
+                  className="btn"
+                  type="button"
+                  onClick={comp ? registercompany : registeruser}
+                >
                   Signup
                 </button>
               </div>
