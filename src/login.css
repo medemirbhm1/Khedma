@@ -20,7 +20,15 @@
   width: 350px;
   max-width: 95%;
 }
-
+.login form .container .cont:last-of-type .input {
+  margin-bottom: 15px;
+}
+.login form .container .cont:last-of-type .forgot {
+  font-size: 12px;
+  align-self: flex-end;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
 .login form .container .btn {
   width: 350px;
   max-width: 95%;

@@ -1,0 +1,32 @@
+.forgotPw form .container {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.forgotPw form .container .title h2 {
+  font-size: 36px;
+  color: #0a093d;
+}
+.forgotPw form .container .title h5 {
+  color: #217bf4;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+.forgotPw form .container .cont {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  max-width: 95%;
+}
+.forgotPw form .container .back {
+  text-align: center;
+  margin-top: 30px;
+  color: #0a093d;
+  cursor: pointer;
+}
+.forgotPw form .container .chngpw {
+  width: 350px;
+  max-width: 95%;
+}

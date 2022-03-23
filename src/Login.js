@@ -2,10 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "./img/logo.png";
 import "./login.css";
-import {
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-} from "firebase/auth";
+import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 
 import { auth } from "./firebase";
 
@@ -75,6 +72,14 @@ function Login() {
                 setLoginPassword(event.target.value);
               }}
             />
+            <div
+              className="forgot"
+              onClick={() => {
+                navigate("/forgotPassword");
+              }}
+            >
+              Forgot your password ?
+            </div>
           </div>
           <button className="btn" onClick={login} type="button">
             Login
