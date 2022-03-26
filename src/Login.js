@@ -9,7 +9,6 @@ import { auth } from "./firebase";
 function Login() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-
   const [user, setUser] = useState({});
 
   onAuthStateChanged(auth, (currentUser) => {
