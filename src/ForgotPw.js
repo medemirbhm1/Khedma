@@ -6,30 +6,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 function ForgotPw() {
   const navigate = useNavigate("/");
-  const [codeSent, setCodeSent] = useState(false);
-  const [codeConfirmed, setCodeConfirmed] = useState(false);
-  const [password, setPassword] = useState("");
-  const [confPassword, setConfPassword] = useState("");
-  function sendCode() {
-    setCodeSent(true);
-  }
-  function confirm() {
-    // if the confirmation code is true
-    setCodeConfirmed(true);
-  }
-  function chngPassword() {
-    if (
-      password === confPassword &&
-      password.length > 6 &&
-      password.length < 21
-    ) {
-      //change password
-    } else {
-      if (password.length < 6) {
-        alert("Password must be > 6");
-      } else if (password.length > 20) alert("Password must be < 20");
-      else alert("Passwords are not equal");
-    }
+  const [emailSent, setEmailSent] = useState(false);
+  function sendEmail() {
+    setEmailSent(true);
+    //send verification email
   }
   return (
     <div className="forgotPw">
@@ -43,100 +23,37 @@ function ForgotPw() {
       </nav>
       <form>
         <div className="container">
-          <div className="title">
-            <h2>
-              {" "}
-              {!codeSent
-                ? "Forgot your password ?"
-                : !codeConfirmed
-                ? "Code was sent"
-                : "Set a new password"}
-            </h2>
-            <h5>
-              {!codeSent
-                ? "Don't worry"
-                : !codeConfirmed
-                ? "Please check your mail"
-                : "Login again"}
-            </h5>
-          </div>
-          {!codeSent ? (
-            <div className="cont">
-              <label className="label" htmlFor="email">
-                Email
-              </label>
-              <input
-                className="input"
-                type="email"
-                id="email"
-                onChange={(event) => {}}
-              />
-              <button className="btn" onClick={sendCode} type="button">
-                Send verification code
-              </button>
-              <div
-                className="back"
-                onClick={() => {
-                  navigate("/login");
-                }}
-              >
-                <FontAwesomeIcon className="icon" icon={faArrowLeft} /> Back to
-                login
-              </div>
-            </div>
-          ) : !codeConfirmed ? (
-            <div className="cont">
-              <label htmlFor="code" className="label">
-                Verification Code
-              </label>
-              <input
-                id="code"
-                type="number"
-                className="input"
-                placeholder="######"
-                onInput={(e) => (e.target.value = e.target.value.slice(0, 6))}
-              />
-              <button className="btn" type="button" onClick={confirm}>
-                Confirm
-              </button>
-            </div>
-          ) : (
+          {!emailSent ? (
             <>
-              <div className="cont">
-                <label htmlFor="password" className="label">
-                  New Password
-                </label>
-                <input
-                  id="password"
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                  }}
-                  type="password"
-                  className="input"
-                />
+              <div className="title">
+                <h2>Forgot your password ?</h2>
+                <h5>Don't worry</h5>
               </div>
               <div className="cont">
-                <label htmlFor="confirmPw" className="label">
-                  Confirm Password
+                <label className="label" htmlFor="email">
+                  Email
                 </label>
-                <input
-                  id="confirmPw"
-                  onChange={(e) => {
-                    setConfPassword(e.target.value);
-                  }}
-                  type="password"
-                  className="input"
-                />
+                <input className="input" type="email" id="email" />
+                <button className="btn" onClick={sendEmail} type="button">
+                  Send verification code
+                </button>
               </div>
-              <button
-                type="button"
-                className="btn chngpw"
-                onClick={chngPassword}
-              >
-                Change Password
-              </button>
             </>
+          ) : (
+            <div className="title">
+              <h2>Verification link was sent</h2>
+              <h5>Please check your mail</h5>
+            </div>
           )}
+          <div
+            className="back"
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
+            <FontAwesomeIcon className="icon" icon={faArrowLeft} /> Back to
+            login
+          </div>
         </div>
       </form>
     </div>

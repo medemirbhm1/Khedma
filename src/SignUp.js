@@ -84,7 +84,7 @@ function SignUp() {
     }
   };
   function createAcc() {
-    //if verification code is true
+    //if verification is true
     comp ? registercompany() : registeruser();
   }
   const [chose, setChose] = useState(false);
@@ -237,29 +237,14 @@ function SignUp() {
             </>
           ) : (
             <div className="confirm">
-              <h2>Code was sent</h2>
+              <h2>Verification link was sent</h2>
               <h5>please check your email</h5>
-              <label htmlFor="code" className="label">
-                Verification Code
-              </label>
-              <input
-                id="code"
-                type="number"
-                className="input"
-                placeholder="######"
-                onInput={(e) => (e.target.value = e.target.value.slice(0, 6))}
-              />
-              <button className="btn" type="button" onClick={createAcc}>
-                Confirm
-              </button>
               <div
                 className="back"
-                onClick={() => {
-                  setSigned(false);
-                }}
+                onClick={() => navigate("/login")}
               >
                 <FontAwesomeIcon className="icon" icon={faArrowLeft} /> Back to
-                signup
+                login
               </div>
             </div>
           )}
@@ -268,5 +253,4 @@ function SignUp() {
     </div>
   );
 }
-
 export default SignUp;
