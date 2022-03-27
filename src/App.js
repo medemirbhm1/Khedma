@@ -7,7 +7,7 @@ import SignUp from "./SignUp";
 import ForgotPw from "./ForgotPw";
 import Home from "./Home";
 function App() {
-  let user = false;
+  let user = true;
   return (
     <div className="App">
       {!user ? (

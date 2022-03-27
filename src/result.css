@@ -82,40 +82,36 @@
   background-color: #3f3d56;
 }
 .result .container .person {
+  width: 500px;
   max-width: 95%;
-  max-width: 600px;
   background-color: #fff;
-  padding: 25px;
   border-radius: 8px;
   border: 1px solid #e7e7e7;
   display: flex;
   align-items: center;
   gap: 10px;
-  position: relative;
 }
-.result .container .person::before {
-  content: "";
-  width: 20%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
+.result .container .person .sqr {
   background-color: #3f3d56;
-  z-index: 0;
+  width: 140px;
+  height: 100%;
 }
-.result .container .image img {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  z-index: 4;
+.result .container .person .content {
+  padding: 25px;
 }
-.result .container .person .name {
+.result .container .person .cont {
+  display: flex;
+  justify-content: space-between;
+}
+.result .container .person .cont .name {
   color: #3f3d56;
   font-weight: 600;
   font-size: 20px;
+}
+.result .container .person .cont .avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
 }
 .result .container .person .jtitle {
   margin: 5px 0;

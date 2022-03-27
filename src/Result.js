@@ -115,33 +115,124 @@ function Result() {
             </div>
           </>
         ) : (
-          <div className="person">
-            <div className="sqr"></div>
-            <div className="text">
-              <div className="cont">
-                <div className="name">Mansour Houssam</div>
-                <img src={img} alt="" />
-              </div>
-              <div className="jtitle">Frontend developer</div>
-              <div className="rating">
-                <img src={stary} alt="" />
-                <img src={stary} alt="" />
-                <img src={stary} alt="" />
-                <img src={stary} alt="" />
-                <img src={starg} alt="" />
-              </div>
-              <div className="location">Msila, Algeria</div>
-              <div className="description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Maiores, voluptas natus sunt illo sapiente eum nihil nulla ipsam
-                fugit vitae. Temporibus provident est minima, officia
-                repudiandae iste sint maiores molestias.
-              </div>
-              <div className="btn-cont">
-                <button className="btn">Visit Profile</button>
+          <>
+            <div className="person">
+              <div className="sqr"></div>
+              <div className="content">
+                <div className="cont">
+                  <div className="text">
+                    <div className="name">Mansour Houssam</div>
+                    <div className="jtitle">Frontend developer</div>
+                    <div className="rating">
+                      <img src={stary} alt="" />
+                      <img src={stary} alt="" />
+                      <img src={stary} alt="" />
+                      <img src={stary} alt="" />
+                      <img src={starg} alt="" />
+                    </div>
+                    <div className="location">Msila, Algeria</div>
+                  </div>
+                  <img className="avatar" src={img} alt="" />
+                </div>
+                <div className="description">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Maiores, voluptas natus sunt illo sapiente eum nihil nulla
+                  ipsam fugit vitae. Temporibus provident est minima, officia
+                  repudiandae iste sint maiores molestias.
+                </div>
+                <div className="btn-cont">
+                  <button className="btn">Visit Profile</button>
+                </div>
               </div>
             </div>
-          </div>
+            <div className="person">
+              <div className="sqr"></div>
+              <div className="content">
+                <div className="cont">
+                  <div className="text">
+                    <div className="name">Mansour Houssam</div>
+                    <div className="jtitle">Frontend developer</div>
+                    <div className="rating">
+                      <img src={stary} alt="" />
+                      <img src={stary} alt="" />
+                      <img src={stary} alt="" />
+                      <img src={stary} alt="" />
+                      <img src={starg} alt="" />
+                    </div>
+                    <div className="location">Msila, Algeria</div>
+                  </div>
+                  <img className="avatar" src={img} alt="" />
+                </div>
+                <div className="description">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Maiores, voluptas natus sunt illo sapiente eum nihil nulla
+                  ipsam fugit vitae. Temporibus provident est minima, officia
+                  repudiandae iste sint maiores molestias.
+                </div>
+                <div className="btn-cont">
+                  <button className="btn">Visit Profile</button>
+                </div>
+              </div>
+            </div>
+            <div className="person">
+              <div className="sqr"></div>
+              <div className="content">
+                <div className="cont">
+                  <div className="text">
+                    <div className="name">Mansour Houssam</div>
+                    <div className="jtitle">Frontend developer</div>
+                    <div className="rating">
+                      <img src={stary} alt="" />
+                      <img src={stary} alt="" />
+                      <img src={stary} alt="" />
+                      <img src={stary} alt="" />
+                      <img src={starg} alt="" />
+                    </div>
+                    <div className="location">Msila, Algeria</div>
+                  </div>
+                  <img className="avatar" src={img} alt="" />
+                </div>
+                <div className="description">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Maiores, voluptas natus sunt illo sapiente eum nihil nulla
+                  ipsam fugit vitae. Temporibus provident est minima, officia
+                  repudiandae iste sint maiores molestias.
+                </div>
+                <div className="btn-cont">
+                  <button className="btn">Visit Profile</button>
+                </div>
+              </div>
+            </div>
+            <div className="person">
+              <div className="sqr"></div>
+              <div className="content">
+                <div className="cont">
+                  <div className="text">
+                    <div className="name">Mansour Houssam</div>
+                    <div className="jtitle">Frontend developer</div>
+                    <div className="rating">
+                      <img src={stary} alt="" />
+                      <img src={stary} alt="" />
+                      <img src={stary} alt="" />
+                      <img src={stary} alt="" />
+                      <img src={starg} alt="" />
+                    </div>
+                    <div className="location">Msila, Algeria</div>
+                  </div>
+                  <img className="avatar" src={img} alt="" />
+                </div>
+                <div className="description">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Maiores, voluptas natus sunt illo sapiente eum nihil nulla
+                  ipsam fugit vitae. Temporibus provident est minima, officia
+                  repudiandae iste sint maiores molestias.
+                </div>
+                <div className="btn-cont">
+                  <button className="btn">Visit Profile</button>
+                </div>
+              </div>
+            </div>
+          </>
         )}
       </div>
     </div>
