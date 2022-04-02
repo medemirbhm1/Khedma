@@ -29,7 +29,7 @@ function Landing() {
     alert("Copied the text: " + window.location.href);
   }
   return (
-    <div className="landing">
+    <div className="landing gradient-bg">
       <div className="header">
         {/* NAVBAR */}
         <nav>

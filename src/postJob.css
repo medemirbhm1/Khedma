@@ -1,0 +1,93 @@
+.postJob {
+  min-height: 100vh;
+}
+.postJob form .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.postJob form .container .text {
+  width: fit-content;
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+.postJob form .container .text h2 {
+  font-size: 36px;
+  color: #0a093d;
+  margin: 30px 0;
+}
+.postJob form .container .cont {
+  margin-bottom: 30px;
+}
+.postJob form .container .input {
+  margin: 0;
+}
+.postJob form .container .label {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+.postJob form .container .cont > div {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  margin-bottom: 15px;
+}
+.postJob form .container .cont > div label {
+  font-weight: 500;
+}
+.postJob form .container .cont > div label span {
+  font-size: 14px;
+  font-weight: 400;
+  color: #727272;
+}
+.postJob form .container .cont:last-of-type > div {
+  align-items: center;
+}
+.postJob form .container .cont:last-of-type > div label {
+  color: #727272;
+  font-size: 14px;
+}
+.postJob form .container .cont:last-of-type > div .icon {
+  font-size: 14px;
+  color: #0a093d;
+}
+.postJob form .container > img {
+  width: 40%;
+}
+.postJob form .container .text .btn {
+  margin-left: auto;
+  margin-bottom: 20px;
+}
+@media (max-width: 767px) {
+  .postJob form .container .text {
+    width: 100%;
+    max-width: 100%;
+  }
+  .postJob form .container > img {
+    display: none;
+  }
+}
+.postJob form .container .text textarea {
+  resize: none;
+  font-family: inherit;
+  width: 500px;
+  min-height: 200px;
+}
+.postJob form .container .bt-cont {
+  display: flex;
+  justify-content: space-between;
+}
+.postJob form .container .bt-cont .btn {
+  margin: 0;
+}
+.postJob form .container .bt-cont .btn:first-child {
+  background-color: transparent;
+  color: #217bf4;
+  border: 1px solid #217bf4;
+}
+@media (max-width: 767px) {
+  .postJob form .container .text textarea {
+    width: 100%;
+  }
+}

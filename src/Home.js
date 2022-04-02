@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./home.css";
 import logo from "./img/logo.png";
-import Result from "./Result"
+import Result from "./Result";
 function Home() {
-  const [search, setSearch] = useState(true)
+  const [search, setSearch] = useState(true);
+  const navigate = useNavigate();
   return (
     <div className="home">
       <nav>
@@ -13,7 +15,14 @@ function Home() {
             Khedma
           </div>
           <div className="buttons">
-            <button className="btn">Post a job</button>
+            <button
+              className="btn"
+              onClick={() => {
+                navigate("/PostAJob");
+              }}
+            >
+              Post a job
+            </button>
             <button className="btn">Your profile</button>
           </div>
         </div>
@@ -35,12 +44,18 @@ function Home() {
               <input type="text" placeholder="Location" className="input" />
             </div>
           </form>
-          <button className="btn" type="button" onClick={()=>{setSearch(true)}}>
+          <button
+            className="btn"
+            type="button"
+            onClick={() => {
+              setSearch(true);
+            }}
+          >
             Search
           </button>
         </div>
       </div>
-      {search ? <Result/> :""}
+      {search ? <Result /> : ""}
     </div>
   );
 }

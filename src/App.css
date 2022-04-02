@@ -30,6 +30,9 @@
 .input:focus {
   outline: none;
 }
+.gradient-bg {
+  background: linear-gradient(to top left, #d4e7fe 0, #fff 100%);
+}
 /* components end */
 /* variables end  */
 

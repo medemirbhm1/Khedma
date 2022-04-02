@@ -26,22 +26,28 @@
 .home .search .container form .cont {
   display: flex;
   align-items: center;
-  border: 1px solid #949494;
+  border: 1px solid #3f3d56;
   border-radius: 6px;
   margin-bottom: 30px;
   max-width: 90%;
-  width: 400px;  
+  width: 400px;
 }
 .home .search .container form .cont label {
-    font-size: 14px;
-    padding-left: 15px;
-    font-weight: 600;
+  font-size: 14px;
+  color: #3f3d56;
+  padding-left: 15px;
+  font-weight: 600;
 }
 .home .search .container form .cont .input {
-    margin: 0;
-    border: 0;
+  margin: 0;
+  border: 0;
 }
 .home .search .container form .cont .input::placeholder {
-    font-weight: 500;
-    color: #C0C0C0;
+  font-weight: 500;
+  color: #c0c0c0;
+}
+.home .search .container .btn {
+  background-color: transparent;
+  color: #217bf4;
+  border: 1px solid #217bf4;
 }

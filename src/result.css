@@ -79,7 +79,7 @@
 .result .container .btn-cont .btn {
   width: fit-content;
   padding: 10px 16px;
-  background-color: #3f3d56;
+  background-color: #217bf4;
 }
 .result .container .person {
   width: 500px;
@@ -92,9 +92,10 @@
   gap: 10px;
 }
 .result .container .person .sqr {
-  background-color: #3f3d56;
+  background-color: #217bf4;
   width: 140px;
   height: 100%;
+  border-radius: 8px 0 0 8px;
 }
 .result .container .person .content {
   padding: 25px;
