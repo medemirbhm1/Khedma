@@ -23,7 +23,14 @@ function Home() {
             >
               Post a job
             </button>
-            <button className="btn">Your profile</button>
+            <button
+              className="btn"
+              onClick={() => {
+                navigate("/Profile");
+              }}
+            >
+              Your profile
+            </button>
           </div>
         </div>
       </nav>

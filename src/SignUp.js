@@ -28,16 +28,55 @@ function SignUp() {
   onAuthStateChanged(auth, (currentUser) => {
     setUser(currentUser);
   });
-  //registre_user :
+  const confirmemail = async (token) => {
+    try {
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+
+      var raw = JSON.stringify({
+        requestType: "VERIFY_EMAIL",
+        idToken: token,
+      });
+
+      var requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow",
+      };
+
+      var response = await fetch(
+        "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyD9KDPcDyMAPzHrK8QO20Ibs2pt3JoybyQ",
+        requestOptions
+      )
+        .then((response) => response.text())
+        .then((result) => {
+          console.log(result);
+        })
+        .catch((error) => {
+          console.log("error", error);
+        });
+
+      console.log(registerEmail);
+    } catch (error) {
+      alert(" existe pas");
+      console.log(error.message);
+    }
+  };
+
   const registeruser = async () => {
     try {
       const user = await createUserWithEmailAndPassword(
         auth,
         registerEmail,
         registerPassword
-      ).then((userCredential) => {
+      ).then(async (userCredential) => {
         console.log(userCredential);
         const user = userCredential.user;
+        var token = await user.getIdToken();
+
+        console.log(token);
+        confirmemail(token);
 
         setDoc(doc(database, "users", user.uid), {
           //addDoc((database , 'users'+ user.uid),{
@@ -64,9 +103,14 @@ function SignUp() {
         auth,
         registerEmail,
         registerPassword
-      ).then((userCredential) => {
-        console.log(userCredential);
+      ).then(async (userCredential) => {
         const user = userCredential.user;
+        var token = await user.getIdToken();
+
+        console.log(token);
+
+        confirmemail(token);
+        console.log(userCredential);
 
         setDoc(doc(database, "users", user.uid), {
           Email: user.email,
@@ -84,7 +128,6 @@ function SignUp() {
     }
   };
   function createAcc() {
-    //if verification is true
     comp ? registercompany() : registeruser();
   }
   const [chose, setChose] = useState(false);
@@ -224,8 +267,8 @@ function SignUp() {
                       registerPassword
                     ) {
                       if (registerPassword === confirmPassword) {
+                        createAcc();
                         setSigned(true);
-                        //send the confirmation code
                       } else alert("Passwords do not match");
                     } else alert("pleasse fill in all the inputs");
                   }}
@@ -239,10 +282,7 @@ function SignUp() {
             <div className="confirm">
               <h2>Verification link was sent</h2>
               <h5>please check your email</h5>
-              <div
-                className="back"
-                onClick={() => navigate("/login")}
-              >
+              <div className="back" onClick={() => navigate("/login")}>
                 <FontAwesomeIcon className="icon" icon={faArrowLeft} /> Back to
                 login
               </div>

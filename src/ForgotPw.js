@@ -7,10 +7,46 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 function ForgotPw() {
   const navigate = useNavigate("/");
   const [emailSent, setEmailSent] = useState(false);
-  function sendEmail() {
-    setEmailSent(true);
-    //send verification email
-  }
+  const [email, setEmail] = useState("");
+  const forgotpass = async (e) => {
+    try {
+      e.preventDefault();
+      setEmailSent(true);
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+
+      var raw = JSON.stringify({
+        requestType: "PASSWORD_RESET",
+        email: email,
+      });
+
+      var requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow",
+      };
+
+      var response = await fetch(
+        "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyD9KDPcDyMAPzHrK8QO20Ibs2pt3JoybyQ",
+        requestOptions
+      )
+        .then((response) => response.text())
+        .then((result) => {
+          console.log(result);
+        })
+        .catch((error) => {
+          console.log("error", error);
+        });
+
+      console.log(email);
+
+      console.log(response);
+    } catch (error) {
+      alert(" existe pas");
+      console.log(error.message);
+    }
+  };
   return (
     <div className="forgotPw">
       <nav>
@@ -21,7 +57,11 @@ function ForgotPw() {
           </button>
         </div>
       </nav>
-      <form>
+      <form
+        onSubmit={(e) => {
+          email ? forgotpass(e) : alert("Please type your email");
+        }}
+      >
         <div className="container">
           {!emailSent ? (
             <>
@@ -33,10 +73,16 @@ function ForgotPw() {
                 <label className="label" htmlFor="email">
                   Email
                 </label>
-                <input className="input" type="email" id="email" />
-                <button className="btn" onClick={sendEmail} type="button">
-                  Send verification code
-                </button>
+                <input
+                  className="input"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                  type="email"
+                  id="email"
+                />
+                <button className="btn">Send verification code</button>
               </div>
             </>
           ) : (

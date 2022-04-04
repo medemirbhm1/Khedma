@@ -22,7 +22,7 @@ function PostJob() {
     }
   }
   function submitJob() {
-    if(desc){
+    if (desc) {
       //send data to the backend
     }
   }
@@ -49,6 +49,7 @@ function PostJob() {
                   id="first"
                   type="text"
                   className="input"
+                  value={title}
                   onChange={(e) => setTitle(e.target.value)}
                 />
               </div>

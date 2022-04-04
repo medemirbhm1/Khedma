@@ -7,13 +7,15 @@ import SignUp from "./SignUp";
 import ForgotPw from "./ForgotPw";
 import Home from "./Home";
 import PostJob from "./PostJob";
+import Profile from "./Profile";
 import { auth } from "./firebase";
 import { useDispatch } from "react-redux";
 import { login, logout, selectUser } from "./features/userSlice";
 import { useSelector } from "react-redux";
 
 function App() {
-  const user = useSelector(selectUser);
+  let user = useSelector(selectUser);
+   user = false;
   const dispatch = useDispatch();
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((userAuth) => {
@@ -26,7 +28,7 @@ function App() {
     });
     return unsubscribe;
   }, []);
-  
+
   return (
     <div className="App">
       {!user ? (
@@ -43,6 +45,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/PostAJob" element={<PostJob />} />
+            <Route path="/Profile" element={<Profile/>}/>
           </Routes>
         </Router>
       )}
