@@ -15,7 +15,7 @@ import { useSelector } from "react-redux";
 
 function App() {
   let user = useSelector(selectUser);
-   user = false;
+  user = true;
   const dispatch = useDispatch();
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((userAuth) => {
@@ -45,7 +45,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/PostAJob" element={<PostJob />} />
-            <Route path="/Profile" element={<Profile/>}/>
+            <Route path="/Profile" element={<Profile />} />
           </Routes>
         </Router>
       )}
