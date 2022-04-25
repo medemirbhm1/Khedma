@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import logo from "./img/logo.png";
 import "./login.css";
 import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
-
 import { auth } from "./firebase";
 
 function Login() {
@@ -24,6 +23,7 @@ function Login() {
       );
       alert("email valide");
       console.log(user);
+      navigate("/")
     } catch (error) {
       alert(" existe pas");
       console.log(error.message);

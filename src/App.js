@@ -8,6 +8,7 @@ import ForgotPw from "./ForgotPw";
 import Home from "./Home";
 import PostJob from "./PostJob";
 import Profile from "./Profile";
+import Settings from "./Settings";
 import { auth } from "./firebase";
 import { useDispatch } from "react-redux";
 import { login, logout, selectUser } from "./features/userSlice";
@@ -15,7 +16,6 @@ import { useSelector } from "react-redux";
 
 function App() {
   let user = useSelector(selectUser);
-  user = true;
   const dispatch = useDispatch();
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((userAuth) => {
@@ -46,6 +46,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/PostAJob" element={<PostJob />} />
             <Route path="/Profile" element={<Profile />} />
+            <Route path="/Settings" element={<Settings />} />
           </Routes>
         </Router>
       )}

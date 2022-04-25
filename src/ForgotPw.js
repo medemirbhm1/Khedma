@@ -8,9 +8,8 @@ function ForgotPw() {
   const navigate = useNavigate("/");
   const [emailSent, setEmailSent] = useState(false);
   const [email, setEmail] = useState("");
-  const forgotpass = async (e) => {
+  const forgotpass = async () => {
     try {
-      e.preventDefault();
       setEmailSent(true);
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
@@ -59,7 +58,8 @@ function ForgotPw() {
       </nav>
       <form
         onSubmit={(e) => {
-          email ? forgotpass(e) : alert("Please type your email");
+          e.preventDefault()
+          email ? forgotpass(e): alert("Please type your email");
         }}
       >
         <div className="container">

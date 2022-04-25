@@ -15,13 +15,15 @@ import {
 import { auth } from "./firebase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-
+import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 function SignUp() {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [registerlastname, setRegisterlastname] = useState("");
   const [registerfirstname, setRegisterfirstname] = useState("");
+  const [registerCountry, setRegisterCountry] = useState("");
+  const [registerCity, setRegisterCity] = useState("");
   const [registerbirthday, setRegisterbirthday] = useState("");
   const [user, setUser] = useState({});
   const [signed, setSigned] = useState(false);
@@ -85,6 +87,8 @@ function SignUp() {
           lastname: registerlastname,
           firstname: registerfirstname,
           birthday: registerbirthday,
+          country: registerCountry,
+          city: registerCity,
           create_date: new Date().getTime(),
           date: new Date().getDate(),
         });
@@ -115,7 +119,8 @@ function SignUp() {
         setDoc(doc(database, "users", user.uid), {
           Email: user.email,
           companyname: registerlastname,
-          Location: registerfirstname,
+          country: registerCountry,
+          city: registerCity,
           date_de_creation: registerbirthday,
           create_date: new Date().getTime(),
           date: new Date().getDate(),
@@ -195,18 +200,22 @@ function SignUp() {
                     />
                   </div>
                   <div>
-                    <label className="label" htmlFor="second">
-                      {comp ? "Location" : "Last Name"}
-                    </label>
-                    <input
-                      id="second"
-                      className="input"
-                      type="text"
-                      value={registerlastname}
-                      onChange={(event) => {
-                        setRegisterlastname(event.target.value);
-                      }}
-                    />
+                    {!comp && (
+                      <>
+                        <label className="label" htmlFor="second">
+                          Last Name
+                        </label>
+                        <input
+                          id="second"
+                          className="input"
+                          type="text"
+                          value={registerlastname}
+                          onChange={(event) => {
+                            setRegisterlastname(event.target.value);
+                          }}
+                        />
+                      </>
+                    )}
                   </div>
                 </div>
                 <label className="label" htmlFor="third">
@@ -220,6 +229,23 @@ function SignUp() {
                     setRegisterbirthday(event.target.value);
                   }}
                 />
+                <div className="cont">
+                  <label className="label">Country</label>
+                  <CountryDropdown
+                    className="input"
+                    value={registerCountry}
+                    onChange={(val) => setRegisterCountry(val)}
+                  />
+                </div>
+                <div className="cont">
+                  <label className="label">City</label>
+                  <RegionDropdown
+                    className="input"
+                    country={registerCountry}
+                    value={registerCity}
+                    onChange={(val) => setRegisterCity(val)}
+                  />
+                </div>
                 <label className="label" htmlFor="fourth">
                   Email
                 </label>

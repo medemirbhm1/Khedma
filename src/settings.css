@@ -1,0 +1,45 @@
+.settings form h2 {
+  font-size: 36px;
+  color: #0a093d;
+  margin: 30px 0;
+}
+.settings form .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-bottom: 50px;
+}
+.settings form .container .left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.settings form .container .left .cont.mrg {
+  margin-bottom: 30px;
+}
+.settings form .container .left .btn:first-of-type {
+  margin-bottom: 15px;
+  background-color: #b33a3a;
+}
+.settings form .container > img {
+  width: 40%;
+}
+
+@media (max-width: 767px) {
+  .settings form .container .left {
+    width: 100%;
+  }
+  .settings form .container > img {
+    display: none;
+  }
+}

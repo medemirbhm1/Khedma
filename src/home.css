@@ -1,16 +1,3 @@
-.home nav .container {
-  justify-content: space-between;
-}
-.home nav .container .buttons {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.home nav .container .buttons .btn:last-child {
-  background-color: transparent;
-  color: #217bf4;
-  border: 1px solid #217bf4;
-}
 .home .search .container {
   padding-top: 80px;
   display: flex;

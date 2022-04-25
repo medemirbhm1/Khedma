@@ -1,0 +1,57 @@
+nav .container {
+  justify-content: space-between;
+  position: relative;
+}
+nav .btns {
+  display: flex;
+  align-items: center;
+  gap: 10px;  
+}
+nav .btns button.btn {
+  background-color: transparent;
+  border: 1px solid #ded2d9;
+  color: #3f3d56;
+  padding: 12px;
+  display: flex;
+  height: 50px;
+  align-items: center;
+  gap: 8px;
+  transition: 0.3s;
+}
+nav .btns button.btn:hover {
+  color: #217bf4;
+  background-color: #f1f1f1;
+}
+nav .btns .caret {
+  font-size: 20px;
+}
+nav .btns .prof img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+nav ul.menu {
+  position: absolute;
+  top: -20rem;
+  right: 12px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #fff;
+  box-shadow: 0 4px 14px rgb(0 0 0 / 10%);
+  padding: 20px 30px;
+}
+nav ul.menu.active {
+  top: 75px;
+}
+nav ul.menu li {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+}
+nav ul.menu li .icon {
+  color: #3f3d56;
+  font-size: 18px;
+}

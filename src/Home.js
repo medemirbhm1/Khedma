@@ -1,39 +1,17 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./home.css";
-import logo from "./img/logo.png";
 import Result from "./Result";
+import Nav from "./Nav";
 function Home() {
-  const [search, setSearch] = useState(true);
+  const [search, setSearch] = useState(false);
   const navigate = useNavigate();
+  function handleSearch() {
+    setSearch(true);
+  }
   return (
     <div className="home">
-      <nav>
-        <div className="container">
-          <div className="logo">
-            <img src={logo} alt="logo" />
-            Khedma
-          </div>
-          <div className="buttons">
-            <button
-              className="btn"
-              onClick={() => {
-                navigate("/PostAJob");
-              }}
-            >
-              Post a job
-            </button>
-            <button
-              className="btn"
-              onClick={() => {
-                navigate("/Profile");
-              }}
-            >
-              Your profile
-            </button>
-          </div>
-        </div>
-      </nav>
+      <Nav />
       <div className="search">
         <div className="container">
           <form>
@@ -51,18 +29,12 @@ function Home() {
               <input type="text" placeholder="Location" className="input" />
             </div>
           </form>
-          <button
-            className="btn"
-            type="button"
-            onClick={() => {
-              setSearch(true);
-            }}
-          >
+          <button className="btn" type="button" onClick={handleSearch}>
             Search
           </button>
         </div>
       </div>
-      {search ? <Result /> : ""}
+      {search && <Result />}
     </div>
   );
 }

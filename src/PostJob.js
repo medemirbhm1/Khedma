@@ -5,6 +5,7 @@ import logo from "./img/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDollarSign } from "@fortawesome/free-solid-svg-icons";
 import illu from "./img/undraw_people_search_re_5rre.svg";
+import Nav from "./Nav";
 function PostJob() {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
@@ -28,14 +29,7 @@ function PostJob() {
   }
   return (
     <div className="postJob gradient-bg">
-      <nav>
-        <div className="container">
-          <button className="logo" onClick={() => navigate("/")}>
-            <img src={logo} alt="logo" />
-            Khedma
-          </button>
-        </div>
-      </nav>
+      <Nav />
       <form>
         <div className="container">
           {!completedFirst ? (

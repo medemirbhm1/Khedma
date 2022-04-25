@@ -1,0 +1,37 @@
+.settings form {
+  h2 {
+    font-size: 36px;
+    color: #0a093d;
+    margin: 30px 0;
+  }
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 50px;
+    .left {
+      display: flex;
+      flex-direction: column;
+      .cont.mrg {
+        margin-bottom: 30px;
+      }
+      .btn:first-of-type {
+        margin-bottom: 15px;
+        background-color: #b33a3a;
+      }
+    }
+    > img {
+      width: 40%;
+    }
+  }
+}
+@media (max-width: 767px) {
+  .settings form .container {
+    .left {
+      width: 100%;
+    }
+    > img {
+      display: none;
+    }
+  }
+}
