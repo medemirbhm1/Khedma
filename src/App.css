@@ -11,6 +11,11 @@
   cursor: pointer;
   font-weight: 600;
 }
+.btn.white {
+  background-color: transparent;
+  color: #217bf4;
+  border: 1px solid #217bf4;
+}
 .label {
   font-size: 14px;
   font-weight: 600;
@@ -58,6 +63,9 @@ ul {
 a {
   text-decoration: none;
 }
+p {
+  word-break: break-all;
+}
 
 .container {
   padding-left: 15px;
@@ -97,4 +105,7 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
+}
+textarea {
+  resize: none;
 }

@@ -20,7 +20,7 @@ function Settings() {
     //send modifications to backend
   }
   return (
-    <div className="settings">
+    <div className="settings gradient-bg">
       <Nav />
       <form onSubmit={handleSubmit}>
         <div className="container">

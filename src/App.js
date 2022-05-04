@@ -13,6 +13,7 @@ import { auth } from "./firebase";
 import { useDispatch } from "react-redux";
 import { login, logout, selectUser } from "./features/userSlice";
 import { useSelector } from "react-redux";
+import Portfolio from "./Portfolio";
 
 function App() {
   let user = useSelector(selectUser);
@@ -21,13 +22,13 @@ function App() {
     const unsubscribe = auth.onAuthStateChanged((userAuth) => {
       if (userAuth) {
         console.log(userAuth);
-        dispatch(login({ uid: userAuth.uid, email: userAuth.email }));
+        dispatch(login({ uid: userAuth.uid, email: userAuth.email, name: userAuth.displayName }));
       } else {
         dispatch(logout());
       }
     });
     return unsubscribe;
-  }, []);
+  }, []);//eslint-disable-line
 
   return (
     <div className="App">
@@ -47,6 +48,7 @@ function App() {
             <Route path="/PostAJob" element={<PostJob />} />
             <Route path="/Profile" element={<Profile />} />
             <Route path="/Settings" element={<Settings />} />
+            <Route path="/Portfolio" element={<Portfolio/>}/>
           </Routes>
         </Router>
       )}

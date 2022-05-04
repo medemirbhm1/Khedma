@@ -6,13 +6,11 @@ import {
   faComment,
   faGear,
   faHome,
-  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import "./nav.css";
 import logo from "./img/logo.png";
-import { faRocketchat } from "@fortawesome/free-brands-svg-icons";
 import profImg from "./img/image 296.png";
 import { auth } from "./firebase";
 function Nav() {
@@ -29,7 +27,7 @@ function Nav() {
           <button
             className="prof btn"
             onClick={() => {
-              navigate("/profile");
+              navigate("/Profile");
             }}
           >
             <img src={profImg} alt="" />
@@ -86,6 +84,7 @@ function Nav() {
           <li
             onClick={() => {
               auth.signOut();
+              navigate("/");
             }}
           >
             <span className="icon">
