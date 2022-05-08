@@ -34,7 +34,13 @@ function Profile() {
                 >
                   View your portfolio
                 </button>
-                <button type="button" className="btn">
+                <button
+                  type="button"
+                  className="btn"
+                  onClick={() => {
+                    navigate("/settings");
+                  }}
+                >
                   Settings
                 </button>
               </div>
@@ -44,11 +50,11 @@ function Profile() {
           <ProfileSec2 name="education" />.
           <ProfileSec2 name="project" />.
           <ProfileSec2 name="work experience" />.
-          <ProfileSec3 name="skills" type="withRating"/>
-          <ProfileSec3 name="certificates"/>
-          <ProfileSec3 name="languages" type="withRating"/>
+          <ProfileSec3 name="skills" type="withRating" />
+          <ProfileSec3 name="certificates" />
+          <ProfileSec3 name="languages" type="withRating" />
           <ProfileSec1 name="Hobbies and Interests" />
-          <ProfileSec3 name="Social Accounts"/>
+          <ProfileSec3 name="Social Accounts" />
         </div>
       </div>
     </>

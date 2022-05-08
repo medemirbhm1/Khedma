@@ -60,7 +60,11 @@ function Settings() {
               />
             </div>
             <div className="cont">
-              <label className="label">Password</label>
+              <label className="label">Current Password</label>
+              <input type="password" className="input" />
+            </div>
+            <div className="cont">
+              <label className="label">New Password</label>
               <input type="password" className="input" />
             </div>
             <button className="btn">Delete account</button>

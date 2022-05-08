@@ -170,6 +170,7 @@
 }
 .profile .head .text .btns button {
   margin-right: 10px;
+  margin-bottom: 10px;
 }
 @media (max-width: 767px) {
   .profile .head {

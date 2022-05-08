@@ -19,7 +19,12 @@ function Nav() {
   return (
     <nav>
       <div className="container">
-        <div className="logo">
+        <div
+          className="logo"
+          onClick={() => {
+            navigate("/");
+          }}
+        >
           <img src={logo} alt="logo" />
           Khedma
         </div>

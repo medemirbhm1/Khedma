@@ -1,5 +1,5 @@
 import React from "react";
-import idImg from "./img/image 296.png";
+import idImg from "./img/267513079_1346936529074555_5231013764367827969_n 3.png";
 import ellipse from "./img/Ellipse 22.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
