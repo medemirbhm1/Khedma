@@ -14,7 +14,6 @@ import { useDispatch } from "react-redux";
 import { login, logout, selectUser } from "./features/userSlice";
 import { useSelector } from "react-redux";
 import Portfolio from "./Portfolio";
-
 function App() {
   let user = useSelector(selectUser);
   const dispatch = useDispatch();

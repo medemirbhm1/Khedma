@@ -2,20 +2,17 @@ import React, { useState } from "react";
 import Nav from "./Nav";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import {
-  CountryDropdown,
-  RegionDropdown,
-} from "react-country-region-selector";
+import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import { useSelector } from "react-redux";
 import { selectUser } from "./features/userSlice";
-import img  from "./img/business-3d-seated-businessman-in-black-suit-with-laptop.png";
-import "./settings.css"
+import img from "./img/business-3d-seated-businessman-in-black-suit-with-laptop.png";
+import "./settings.css";
 function Settings() {
   let user = useSelector(selectUser);
   console.log(user);
   const [country, setCountry] = useState("");
   const [region, setRegion] = useState("");
-  function handleSubmit (e){
+  function handleSubmit(e) {
     e.preventDefault();
     //send modifications to backend
   }
@@ -26,10 +23,6 @@ function Settings() {
         <div className="container">
           <div className="left">
             <h2>Settings</h2>
-            <div className="cont">
-              <label className="label">Email</label>
-              <input type="email" className="input" />
-            </div>
             <div className="cont">
               <label className="label">First name</label>
               <input type="text" className="input" />
