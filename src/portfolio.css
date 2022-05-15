@@ -209,6 +209,9 @@
           align-items: center;
   gap: 8px;
 }
+.portfolio .container .blue .section.skills ul li > span, .portfolio .container .blue .section.find ul li > span {
+  font-size: 20px;
+}
 .portfolio .container .blue .section.docs ul li, .portfolio .container .blue .section.find ul li {
   cursor: pointer;
   position: relative;

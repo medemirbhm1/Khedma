@@ -1,0 +1,14 @@
+.rating {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 3px;
+  font-size: 20px;
+}
+.rating span {
+  color: #d8d8d8;
+  cursor: pointer;
+}
+.rating span.active {
+  color: #fffc00;
+}

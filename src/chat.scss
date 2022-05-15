@@ -1,0 +1,36 @@
+.chatSec {
+  min-height: 100vh;
+  display: flex;
+  background-color: #E5E5E5;
+  .sideBar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #217bf4;
+    padding: 30px;
+    color: #fff;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    .owner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      gap: 10px;
+      img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+      }
+      span {
+        font-size: 14px;
+      }
+    }
+    > span {
+      margin-top: 20px;
+      font-size: 28px;
+      cursor: pointer;
+    }
+  }
+}

@@ -14,6 +14,7 @@ import { useDispatch } from "react-redux";
 import { login, logout, selectUser } from "./features/userSlice";
 import { useSelector } from "react-redux";
 import Portfolio from "./Portfolio";
+import Chat from "./Chat";
 function App() {
   let user = useSelector(selectUser);
   const dispatch = useDispatch();
@@ -48,6 +49,7 @@ function App() {
             <Route path="/Profile" element={<Profile />} />
             <Route path="/Settings" element={<Settings />} />
             <Route path="/Portfolio" element={<Portfolio/>}/>
+            <Route path="/Chat" element={<Chat/>}/>
           </Routes>
         </Router>
       )}

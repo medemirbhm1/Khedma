@@ -2,10 +2,16 @@
   background-color: #e5e5e5;
   padding: 50px 0;
 }
+.profile .cont {
+  display: none;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+.profile .cont.active {
+  display: block;
+}
 .profile .sec {
-  background-color: #fff;
   padding: 30px;
-  border-radius: 8px;
   margin-bottom: 50px;
 }
 .profile .sec .top {
@@ -65,7 +71,7 @@
   color: #656464;
 }
 .profile .sec ul.list {
-  max-width: 250px;
+  max-width: 300px;
 }
 .profile .sec ul.list li {
   font-weight: 500;
@@ -99,6 +105,10 @@
 .profile .sec ul.list li a:hover::before {
   display: inline;
 }
+.profile .sec ul.list li .edit {
+  color: #217bf4;
+  cursor: pointer;
+}
 .profile .sec textarea {
   width: 500px;
   max-width: 90%;
@@ -113,6 +123,8 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  border-radius: 8px;
+  background-color: #fff;
 }
 .profile .head .image {
   position: relative;
@@ -172,6 +184,136 @@
   margin-right: 10px;
   margin-bottom: 10px;
 }
+.profile .postedJobs {
+  padding: 30px;
+  padding-top: 0;
+}
+.profile .postedJobs .job {
+  max-width: 800px;
+  padding-bottom: 20px;
+  border-bottom: 1.5px solid #d8d8d8;
+  margin-bottom: 20px;
+}
+.profile .postedJobs .job .top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.profile .postedJobs .job .top .icons span {
+  cursor: pointer;
+}
+.profile .postedJobs .job .top .icons span:first-child {
+  color: #217bf4;
+  margin-right: 8px;
+}
+.profile .postedJobs .job .top .icons span:last-child {
+  color: #b33a3a;
+}
+.profile .postedJobs .job .top h3 {
+  color: #0a093d;
+  font-size: 28px;
+}
+.profile .postedJobs .job .features {
+  margin: 5px 0 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 20px;
+}
+.profile .postedJobs .job .features span {
+  background-color: #e5e5e5;
+  color: #0a093d;
+  padding: 5px 15px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+.profile .postedJobs .job form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.profile .postedJobs .job form .label {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+.profile .postedJobs .job form .input {
+  max-width: 200px;
+}
+.profile .postedJobs .job form .holder {
+  margin-bottom: 20px;
+}
+.profile .postedJobs .job form .holder > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.profile .postedJobs .job form .holder > div label {
+  font-weight: 500;
+}
+.profile .postedJobs .job form .holder > div label span {
+  font-size: 14px;
+  font-weight: 400;
+  color: #727272;
+}
+.profile .postedJobs .job form .holder:first-of-type > div, .profile .postedJobs .job form .holder:last-of-type > div {
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+}
+.profile .postedJobs .job form .btn {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.prContent {
+  background-color: #fff;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+.prContent .ctrl {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 30px;
+}
+.prContent .ctrl h2 {
+  font-size: 32px;
+  color: #217bf4;
+  text-transform: capitalize;
+}
+.prContent .ctrl span {
+  font-size: 25px;
+  color: #0a093d;
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+.prContent .ctrl span.active {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
 @media (max-width: 767px) {
   .profile .head {
     -webkit-box-orient: vertical;

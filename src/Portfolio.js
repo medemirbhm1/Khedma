@@ -18,6 +18,7 @@ import starg from "./img/Star 5.svg";
 import { faFacebook, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import "./portfolio.css";
 import { useNavigate } from "react-router-dom";
+import RatingSet from "./RatingSet";
 function Portfolio() {
   const navigate = useNavigate();
   return (
@@ -179,33 +180,15 @@ function Portfolio() {
             <ul>
               <li>
                 <span>HTML</span>
-                <span className="rating">
-                  <img src={stary} alt="" />
-                  <img src={stary} alt="" />
-                  <img src={stary} alt="" />
-                  <img src={stary} alt="" />
-                  <img src={starg} alt="" />
-                </span>
+                <RatingSet rating={4} />
               </li>
               <li>
                 <span>CSS</span>
-                <span className="rating">
-                  <img src={stary} alt="" />
-                  <img src={stary} alt="" />
-                  <img src={stary} alt="" />
-                  <img src={stary} alt="" />
-                  <img src={starg} alt="" />
-                </span>
+                <RatingSet rating={4} />
               </li>
               <li>
                 <span>JS</span>
-                <span className="rating">
-                  <img src={stary} alt="" />
-                  <img src={stary} alt="" />
-                  <img src={stary} alt="" />
-                  <img src={stary} alt="" />
-                  <img src={starg} alt="" />
-                </span>
+                <RatingSet rating={5} />
               </li>
             </ul>
           </div>

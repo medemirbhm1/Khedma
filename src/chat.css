@@ -1,0 +1,54 @@
+.chatSec {
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #E5E5E5;
+}
+.chatSec .sideBar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #217bf4;
+  padding: 30px;
+  color: #fff;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.chatSec .sideBar .owner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  gap: 10px;
+}
+.chatSec .sideBar .owner img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+.chatSec .sideBar .owner span {
+  font-size: 14px;
+}
+.chatSec .sideBar > span {
+  margin-top: 20px;
+  font-size: 28px;
+  cursor: pointer;
+}

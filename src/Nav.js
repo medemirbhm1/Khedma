@@ -41,7 +41,7 @@ function Nav() {
           <button
             className="chat btn"
             onClick={() => {
-              navigate("/chat");
+              navigate("/Chat");
             }}
           >
             <FontAwesomeIcon icon={faComment} />

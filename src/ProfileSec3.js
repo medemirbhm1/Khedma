@@ -1,8 +1,10 @@
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import stary from "./img/Star 1.svg";
-import starg from "./img/Star 5.svg";
+import RatingSet from "./RatingSet";
 function ProfileSec3({ name, type }) {
   const [editing, setEditing] = useState(false);
+    const [rating, setRating] = useState(5);
   function handleChanges() {}
   function depLabel(lb1, lb2, lb3, lb4) {
     return name === "skills"
@@ -26,7 +28,7 @@ function ProfileSec3({ name, type }) {
             setEditing(!editing);
           }}
         >
-          {editing ? "Save" : "Edit"}
+          {editing ? "Save" : "Add"}
         </button>
       </div>
       {editing ? (
@@ -38,18 +40,11 @@ function ProfileSec3({ name, type }) {
           <label className="label">
             {depLabel("Rating", "Link", "Rating", "Link")}
           </label>
-          {type==="withRating"?(<input
-            placeholder="0-5"
-            type="number"
-            onChange={(e) => {
-              if (e.target.value > 5) e.target.value = 5;
-              else if (e.target.value < 0) e.target.value = 0;
-            }}
-            className="input"
-          />):(
+          {type === "withRating" ? (
+            <RatingSet rating={rating} setRating={setRating} />
+          ) : (
             <input type="url" className="input" />
           )}
-          
         </form>
       ) : (
         <ul className="list">
@@ -57,19 +52,23 @@ function ProfileSec3({ name, type }) {
             {type === "withRating" ? (
               <>
                 <span>- HTML/css</span>
-                <span className="rating">
-                  <img src={stary} alt="" />
-                  <img src={stary} alt="" />
-                  <img src={stary} alt="" />
-                  <img src={stary} alt="" />
-                  <img src={starg} alt="" />
-                </span>
+                <RatingSet rating={rating}/>
               </>
             ) : (
-              <a href="somwhere" target="_blank">
-                - Link
-              </a>
+              <>
+                <a href="somwhere" target="_blank">
+                  - Link
+                </a>
+              </>
             )}
+            <span
+              className="edit"
+              onClick={() => {
+                setEditing(true);
+              }}
+            >
+              <FontAwesomeIcon icon={faPenToSquare} />
+            </span>
           </li>
         </ul>
       )}
