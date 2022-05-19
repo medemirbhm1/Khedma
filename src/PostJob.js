@@ -3,12 +3,18 @@ import { useNavigate } from "react-router-dom";
 import "./postJob.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDollarSign } from "@fortawesome/free-solid-svg-icons";
+import { database } from "./firebase";
+import { addDoc, collection } from "firebase/firestore";
+import { selectUser } from "./features/userSlice";
+import { useSelector } from "react-redux";
+
 import illu from "./img/undraw_people_search_re_5rre.svg";
 import Nav from "./Nav";
 function PostJob() {
+  const user = useSelector(selectUser);
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
-  const [location, setLocation] = useState("One location");
+  const [workplace, setWorkplace] = useState("One location");
   const [work, setWork] = useState("Full time");
   const [minPay, setMinPay] = useState(0);
   const [maxPay, setMaxPay] = useState(0);
@@ -23,7 +29,20 @@ function PostJob() {
   }
   function submitJob() {
     if (desc) {
-      //send data to the backend
+      addDoc(collection(database, "jobs"), {
+        userId: user.id,
+        title: title.split(" "),
+        country: user.country,
+        city: user.city,
+        workplace: workplace,
+        work: work,
+        minPay: minPay,
+        maxPay: maxPay,
+        description: desc,
+        date: new Date().toLocaleDateString(),
+      }).then(() => {
+        navigate("/");
+      });
     }
   }
   return (
@@ -53,9 +72,9 @@ function PostJob() {
                 <div>
                   <input
                     type="radio"
-                    name="location"
+                    name="workplace"
                     value="One location"
-                    onChange={(e) => setLocation(e.target.value)}
+                    onChange={(e) => setWorkplace(e.target.value)}
                     defaultChecked
                   />
                   <label>
@@ -68,7 +87,7 @@ function PostJob() {
                     type="radio"
                     name="location"
                     value="Multiple locations"
-                    onChange={(e) => setLocation(e.target.value)}
+                    onChange={(e) => setWorkplace(e.target.value)}
                   />
                   <label>
                     Multiple locations <br />
@@ -80,7 +99,7 @@ function PostJob() {
                     type="radio"
                     name="location"
                     value="Remote"
-                    onChange={(e) => setLocation(e.target.value)}
+                    onChange={(e) => setWorkplace(e.target.value)}
                   />
                   <label>
                     Remote
@@ -95,7 +114,7 @@ function PostJob() {
                     type="radio"
                     name="location"
                     value="On the road"
-                    onChange={(e) => setLocation(e.target.value)}
+                    onChange={(e) => setWorkplace(e.target.value)}
                   />
                   <label>
                     On the road

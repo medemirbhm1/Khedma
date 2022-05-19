@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Landing from "./Landing";
 import Login from "./Login";
@@ -9,7 +9,11 @@ import Home from "./Home";
 import PostJob from "./PostJob";
 import Profile from "./Profile";
 import Settings from "./Settings";
-import { auth } from "./firebase";
+import { auth, database } from "./firebase";
+import {
+  doc,
+  getDoc,
+} from "firebase/firestore";
 import { useDispatch } from "react-redux";
 import { login, logout, selectUser } from "./features/userSlice";
 import { useSelector } from "react-redux";
@@ -20,16 +24,30 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((userAuth) => {
-      if (userAuth) {
-        console.log(userAuth);
-        dispatch(login({ uid: userAuth.uid, email: userAuth.email, name: userAuth.displayName }));
-      } else {
-        dispatch(logout());
-      }
+      settleUser(userAuth);
     });
     return unsubscribe;
-  }, []);//eslint-disable-line
-
+  }, []); //eslint-disable-line
+  async function settleUser(userAuth) {
+    if (userAuth) {
+      const docRef = doc(database, "users", userAuth.uid);
+      getDoc(docRef).then((doc) => {
+        const userDoc = doc.data();
+        dispatch(
+          login({
+            id: userAuth.uid,
+            email: userAuth.email,
+            fName: userDoc.firstname,
+            lName: userDoc.lastname,
+            country: userDoc.country,
+            city: userDoc.city,
+          })
+        );
+      });
+    } else {
+      dispatch(logout());
+    }
+  }
   return (
     <div className="App">
       {!user ? (
@@ -48,8 +66,8 @@ function App() {
             <Route path="/PostAJob" element={<PostJob />} />
             <Route path="/Profile" element={<Profile />} />
             <Route path="/Settings" element={<Settings />} />
-            <Route path="/Portfolio" element={<Portfolio/>}/>
-            <Route path="/Chat" element={<Chat/>}/>
+            <Route path="/Portfolio" element={<Portfolio />} />
+            <Route path="/Chat" element={<Chat />} />
           </Routes>
         </Router>
       )}

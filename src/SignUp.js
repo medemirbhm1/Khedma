@@ -25,6 +25,7 @@ function SignUp() {
   const [registerCountry, setRegisterCountry] = useState("");
   const [registerCity, setRegisterCity] = useState("");
   const [registerbirthday, setRegisterbirthday] = useState("");
+  const [registerJob, setRegisterJob] = useState("");
   const [user, setUser] = useState({});
   const [signed, setSigned] = useState(false);
   onAuthStateChanged(auth, (currentUser) => {
@@ -81,9 +82,10 @@ function SignUp() {
         confirmemail(token);
 
         setDoc(doc(database, "users", user.uid), {
-          //addDoc((database , 'users'+ user.uid),{
-
+          id: user.uid,
+          isComp: false,
           Email: user.email,
+          job: registerJob.split(" "),
           lastname: registerlastname,
           firstname: registerfirstname,
           birthday: registerbirthday,
@@ -91,9 +93,19 @@ function SignUp() {
           city: registerCity,
           create_date: new Date().getTime(),
           date: new Date().getDate(),
+        }).then(() => navigate("/"));
+        setDoc(doc(database, "portfolios", user.uid), {
+          about: "",
+          education: [],
+          projects: [],
+          workExp: [],
+          skills: [],
+          certificates: [],
+          languages: [],
+          hobbies: "",
+          accounts: [],
         });
       });
-
       alert("user created");
       console.log(user);
     } catch (error) {
@@ -118,12 +130,12 @@ function SignUp() {
 
         setDoc(doc(database, "users", user.uid), {
           Email: user.email,
+          isComp: true,
           companyname: registerlastname,
-          country: registerCountry,
-          city: registerCity,
+          country: [registerCountry],
+          city: [registerCity],
           date_de_creation: registerbirthday,
-          create_date: new Date().getTime(),
-          date: new Date().getDate(),
+          create_date: new Date().toLocaleDateString(),
         });
       });
       alert("user created");
@@ -212,6 +224,15 @@ function SignUp() {
                           value={registerlastname}
                           onChange={(event) => {
                             setRegisterlastname(event.target.value);
+                          }}
+                        />
+                        <label className="label">Job</label>
+                        <input
+                          className="input"
+                          type="text"
+                          value={registerJob}
+                          onChange={(event) => {
+                            setRegisterJob(event.target.value);
                           }}
                         />
                       </>

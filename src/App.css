@@ -28,6 +28,7 @@
   padding: 12px;
   border-radius: 6px;
   margin-bottom: 30px;
+  font-family: inherit;
 }
 .input::placeholder {
   font-family: inherit;

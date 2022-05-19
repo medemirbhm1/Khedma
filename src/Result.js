@@ -7,7 +7,7 @@ import img from "./img/image 299.png";
 import stary from "./img/Star 1.svg";
 import starg from "./img/Star 5.svg";
 
-function Result() {
+function Result({ users, jobs }) {
   const [chosen, setChosen] = useState(false);
   return (
     <div className="result">
@@ -32,206 +32,70 @@ function Result() {
       <div className="container">
         {chosen ? (
           <>
-            <div className="job">
-              <div className="title">Frontend developer</div>
-              <div className="name">ESI-SBA</div>
-              <div className="details">
-                <div className="det">
-                  <FontAwesomeIcon icon={faDollarSign} />
-                  <div className="text">50,000$</div>
+            {jobs.map((job) => (
+              <div className="job">
+                <div className="title">{job.title.join(" ")}</div>
+                <div className="name">{job.country + ", " + job.city}</div>
+                <div className="details">
+                  <div className="det">
+                    <FontAwesomeIcon icon={faDollarSign} />
+                    <div className="text">
+                      {job.minPay + " - " + job.maxPay}
+                    </div>
+                  </div>
+                  <div className="det">
+                    <FontAwesomeIcon icon={faLocationDot} />
+                    <div className="text">{job.workplace}</div>
+                  </div>
+                  <div className="det">
+                    <FontAwesomeIcon icon={faClockFour} />
+                    <div className="text">{job.work}</div>
+                  </div>
                 </div>
-                <div className="det">
-                  <FontAwesomeIcon icon={faLocationDot} />
-                  <div className="text">Remote</div>
-                </div>
-                <div className="det">
-                  <FontAwesomeIcon icon={faClockFour} />
-                  <div className="text">Full-time</div>
-                </div>
-              </div>
-              <div className="description">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. In
-                nobis quos facere iusto atque, blanditiis dolore a inventore,
-                sequi aspernatur culpa tenetur maxime. Temporibus explicabo vero
-                corporis officia sapiente quasi.
-              </div>
-              <div className="btn-cont">
-                <div className="btn">more</div>
-              </div>
-            </div>
-            <div className="job">
-              <div className="title">Frontend developer</div>
-              <div className="name">ESI-SBA</div>
-              <div className="details">
-                <div className="det">
-                  <FontAwesomeIcon icon={faDollarSign} />
-                  <div className="text">50,000$</div>
-                </div>
-                <div className="det">
-                  <FontAwesomeIcon icon={faLocationDot} />
-                  <div className="text">Remote</div>
-                </div>
-                <div className="det">
-                  <FontAwesomeIcon icon={faClockFour} />
-                  <div className="text">Full-time</div>
+                <div className="description">{job.description}</div>
+                <div className="btn-cont">
+                  <div className="btn">contact</div>
                 </div>
               </div>
-              <div className="description">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. In
-                nobis quos facere iusto atque, blanditiis dolore a inventore,
-                sequi aspernatur culpa tenetur maxime. Temporibus explicabo vero
-                corporis officia sapiente quasi.
-              </div>
-              <div className="btn-cont">
-                <div className="btn">more</div>
-              </div>
-            </div>
-            <div className="job">
-              <div className="title">Frontend developer</div>
-              <div className="name">ESI-SBA</div>
-              <div className="details">
-                <div className="det">
-                  <FontAwesomeIcon icon={faDollarSign} />
-                  <div className="text">50,000$</div>
-                </div>
-                <div className="det">
-                  <FontAwesomeIcon icon={faLocationDot} />
-                  <div className="text">Remote</div>
-                </div>
-                <div className="det">
-                  <FontAwesomeIcon icon={faClockFour} />
-                  <div className="text">Full-time</div>
-                </div>
-              </div>
-              <div className="description">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. In
-                nobis quos facere iusto atque, blanditiis dolore a inventore,
-                sequi aspernatur culpa tenetur maxime. Temporibus explicabo vero
-                corporis officia sapiente quasi.
-              </div>
-              <div className="btn-cont">
-                <div className="btn">more</div>
-              </div>
-            </div>
+            ))}
           </>
         ) : (
           <>
-            <div className="person">
-              <div className="sqr"></div>
-              <div className="content">
-                <div className="cont">
-                  <div className="text">
-                    <div className="name">Mansour Houssam</div>
-                    <div className="jtitle">Frontend developer</div>
-                    <div className="rating">
-                      <img src={stary} alt="" />
-                      <img src={stary} alt="" />
-                      <img src={stary} alt="" />
-                      <img src={stary} alt="" />
-                      <img src={starg} alt="" />
+            {users.map((user) => (
+              <div className="person">
+                <div className="sqr"></div>
+                <div className="content">
+                  <div className="cont">
+                    <div className="text">
+                      <div className="name">
+                        {user.firstname + " " + user.lastname}
+                      </div>
+                      <div className="jtitle">{user.job.join(" ")}</div>
+                      <div className="rating">
+                        <img src={stary} alt="" />
+                        <img src={stary} alt="" />
+                        <img src={stary} alt="" />
+                        <img src={stary} alt="" />
+                        <img src={starg} alt="" />
+                      </div>
+                      <div className="location">
+                        {user.country + " " + user.city}
+                      </div>
                     </div>
-                    <div className="location">Msila, Algeria</div>
+                    <img className="avatar" src={img} alt="" />
                   </div>
-                  <img className="avatar" src={img} alt="" />
-                </div>
-                <div className="description">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Maiores, voluptas natus sunt illo sapiente eum nihil nulla
-                  ipsam fugit vitae. Temporibus provident est minima, officia
-                  repudiandae iste sint maiores molestias.
-                </div>
-                <div className="btn-cont">
-                  <button className="btn">Visit Profile</button>
+                  <div className="description">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Maiores, voluptas natus sunt illo sapiente eum nihil nulla
+                    ipsam fugit vitae. Temporibus provident est minima, officia
+                    repudiandae iste sint maiores molestias.
+                  </div>
+                  <div className="btn-cont">
+                    <button className="btn">Visit Profile</button>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="person">
-              <div className="sqr"></div>
-              <div className="content">
-                <div className="cont">
-                  <div className="text">
-                    <div className="name">Mansour Houssam</div>
-                    <div className="jtitle">Frontend developer</div>
-                    <div className="rating">
-                      <img src={stary} alt="" />
-                      <img src={stary} alt="" />
-                      <img src={stary} alt="" />
-                      <img src={stary} alt="" />
-                      <img src={starg} alt="" />
-                    </div>
-                    <div className="location">Msila, Algeria</div>
-                  </div>
-                  <img className="avatar" src={img} alt="" />
-                </div>
-                <div className="description">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Maiores, voluptas natus sunt illo sapiente eum nihil nulla
-                  ipsam fugit vitae. Temporibus provident est minima, officia
-                  repudiandae iste sint maiores molestias.
-                </div>
-                <div className="btn-cont">
-                  <button className="btn">Visit Profile</button>
-                </div>
-              </div>
-            </div>
-            <div className="person">
-              <div className="sqr"></div>
-              <div className="content">
-                <div className="cont">
-                  <div className="text">
-                    <div className="name">Mansour Houssam</div>
-                    <div className="jtitle">Frontend developer</div>
-                    <div className="rating">
-                      <img src={stary} alt="" />
-                      <img src={stary} alt="" />
-                      <img src={stary} alt="" />
-                      <img src={stary} alt="" />
-                      <img src={starg} alt="" />
-                    </div>
-                    <div className="location">Msila, Algeria</div>
-                  </div>
-                  <img className="avatar" src={img} alt="" />
-                </div>
-                <div className="description">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Maiores, voluptas natus sunt illo sapiente eum nihil nulla
-                  ipsam fugit vitae. Temporibus provident est minima, officia
-                  repudiandae iste sint maiores molestias.
-                </div>
-                <div className="btn-cont">
-                  <button className="btn">Visit Profile</button>
-                </div>
-              </div>
-            </div>
-            <div className="person">
-              <div className="sqr"></div>
-              <div className="content">
-                <div className="cont">
-                  <div className="text">
-                    <div className="name">Mansour Houssam</div>
-                    <div className="jtitle">Frontend developer</div>
-                    <div className="rating">
-                      <img src={stary} alt="" />
-                      <img src={stary} alt="" />
-                      <img src={stary} alt="" />
-                      <img src={stary} alt="" />
-                      <img src={starg} alt="" />
-                    </div>
-                    <div className="location">Msila, Algeria</div>
-                  </div>
-                  <img className="avatar" src={img} alt="" />
-                </div>
-                <div className="description">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Maiores, voluptas natus sunt illo sapiente eum nihil nulla
-                  ipsam fugit vitae. Temporibus provident est minima, officia
-                  repudiandae iste sint maiores molestias.
-                </div>
-                <div className="btn-cont">
-                  <button className="btn">Visit Profile</button>
-                </div>
-              </div>
-            </div>
+            ))}
           </>
         )}
       </div>

@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 import DropCont from "./DropCont";
 function Profile() {
   const navigate = useNavigate();
-
   return (
     <>
       <Nav />

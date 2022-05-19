@@ -16,7 +16,6 @@ function DropCont({ name }) {
     <div className="prContent">
       <div className="ctrl">
         <h2>{name}</h2> 
-        
         <span onClick={handleDropdown} ref={chevRef}>
           <FontAwesomeIcon icon={faChevronDown} />
         </span>

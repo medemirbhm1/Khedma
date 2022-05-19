@@ -3,7 +3,10 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-color: #E5E5E5;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #e5e5e5;
 }
 .chatSec .sideBar {
   display: -webkit-box;
@@ -51,4 +54,86 @@
   margin-top: 20px;
   font-size: 28px;
   cursor: pointer;
+}
+.chatSec .users {
+  padding: 25px 0;
+}
+.chatSec .users .search {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #fff;
+  border-radius: 8px;
+}
+.chatSec .users .search label {
+  padding-left: 15px;
+  color: #0a093d;
+}
+.chatSec .users .search input {
+  margin: 0;
+  border: 0;
+}
+.chatSec .users .recent {
+  width: 400px;
+  margin-top: 40px;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 25px;
+}
+.chatSec .users .recent .top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-weight: 600;
+  font-size: 22px;
+  color: #0a093d;
+}
+.chatSec .users .recent .top span:last-child {
+  color: #217bf4;
+  cursor: pointer;
+  display: none;
+}
+.chatSec .users .recent .user {
+  padding: 20px 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 15px;
+  border-bottom: 1px solid rgba(195, 195, 195, 0.4);
+}
+.chatSec .users .recent .user img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+.chatSec .users .recent .user .text span:first-child {
+  font-size: 18px;
+  font-weight: 500;
+}
+.chatSec .users .recent .user .text span:last-child {
+  font-size: 14px;
+  color: rgba(77, 77, 77, 0.7);
+}
+.chatSec .users .recent .user .seen {
+  margin-left: auto;
+  color: rgba(77, 77, 77, 0.4);
+}
+.chatSec .message {
+  width: 50%;
+  height: 100vh;
+  background-color: #fff;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
 }

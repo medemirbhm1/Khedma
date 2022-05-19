@@ -7,6 +7,7 @@ function Chat() {
     <div className="chatSec">
       <SideBar />
       <Users />
+      <div className="message"></div>
     </div>
   );
 }
