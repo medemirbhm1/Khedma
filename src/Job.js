@@ -4,18 +4,37 @@ import {
   faTrashCan,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { useState } from "react";
-function Job() {
+import { database } from "./firebase";
+function Job({ id, title, work, workplace, description, minpay, maxpay }) {
   const [editing, setEditing] = useState(false);
-  const [title, setTitle] = useState("");
-  const [location, setLocation] = useState("One location");
-  const [work, setWork] = useState("Full time");
-  const [minPay, setMinPay] = useState(0);
-  const [maxPay, setMaxPay] = useState(0);
+  const [first, setFirst] = useState(title);
+  const [second, setSecond] = useState(work);
+  const [third, setThird] = useState(workplace);
+  const [fourth, setFourth] = useState(minpay);
+  const [fifth, setFifth] = useState(maxpay);
+  const [sixth, setSixth] = useState(description);
   function handleChanges(e) {
     e.preventDefault();
-    setEditing(false);
-    // send changes to backend
+    const docRef = doc(database, "jobs", id);
+    if (first && fourth && fifth) {
+      updateDoc(docRef, {
+        title: first.split(" "),
+        work: second,
+        workplace: third,
+        minPay: fourth,
+        maxPay: fifth,
+        description: sixth,
+      });
+      setEditing(false);
+    } else {
+      alert("Please fill in all the inputs");
+    }
+  }
+  function deleteJob() {
+    const docRef = doc(database, "jobs", id);
+    deleteDoc(docRef).then(() => window.location.reload(false));
   }
   return (
     <div className="job">
@@ -25,8 +44,9 @@ function Job() {
           <input
             type="text"
             className="input"
+            value={first}
             onChange={(e) => {
-              setTitle(e.target.value);
+              setFirst(e.target.value);
             }}
           />
           <div className="holder">
@@ -38,7 +58,7 @@ function Job() {
                 type="radio"
                 name="location"
                 value="One location"
-                onChange={(e) => setLocation(e.target.value)}
+                onChange={(e) => setSecond(e.target.value)}
                 defaultChecked
               />
               <label>
@@ -51,7 +71,7 @@ function Job() {
                 type="radio"
                 name="location"
                 value="Multiple locations"
-                onChange={(e) => setLocation(e.target.value)}
+                onChange={(e) => setSecond(e.target.value)}
               />
               <label>
                 Multiple locations <br />
@@ -63,7 +83,7 @@ function Job() {
                 type="radio"
                 name="location"
                 value="Remote"
-                onChange={(e) => setLocation(e.target.value)}
+                onChange={(e) => setSecond(e.target.value)}
               />
               <label>
                 Remote
@@ -78,7 +98,7 @@ function Job() {
                 type="radio"
                 name="location"
                 value="On the road"
-                onChange={(e) => setLocation(e.target.value)}
+                onChange={(e) => setSecond(e.target.value)}
               />
               <label>
                 On the road
@@ -94,7 +114,7 @@ function Job() {
                 type="radio"
                 name="work"
                 value="Full time"
-                onChange={(e) => setWork(e.target.value)}
+                onChange={(e) => setThird(e.target.value)}
                 defaultChecked
               />
               <label>Full time</label>
@@ -104,7 +124,7 @@ function Job() {
                 type="radio"
                 name="work"
                 value="Part-time"
-                onChange={(e) => setWork(e.target.value)}
+                onChange={(e) => setThird(e.target.value)}
               />
               <label>Part-time</label>
             </div>
@@ -113,38 +133,7 @@ function Job() {
                 type="radio"
                 name="work"
                 value="Freelance"
-                onChange={(e) => setWork(e.target.value)}
-              />
-              <label>Freelance</label>
-            </div>
-          </div>
-          <div className="holder">
-            <label className="label">Is this a full-time or ... ?</label>
-            <div>
-              <input
-                type="radio"
-                name="work"
-                value="Full time"
-                onChange={(e) => setWork(e.target.value)}
-                defaultChecked
-              />
-              <label>Full time</label>
-            </div>
-            <div>
-              <input
-                type="radio"
-                name="work"
-                value="Part-time"
-                onChange={(e) => setWork(e.target.value)}
-              />
-              <label>Part-time</label>
-            </div>
-            <div>
-              <input
-                type="radio"
-                name="work"
-                value="Freelance"
-                onChange={(e) => setWork(e.target.value)}
+                onChange={(e) => setThird(e.target.value)}
               />
               <label>Freelance</label>
             </div>
@@ -156,15 +145,15 @@ function Job() {
               <input
                 className="input"
                 type="number"
-                value={minPay}
+                value={fourth}
                 onChange={(e) => {
                   if (e.target.value.length > 6) {
                     e.target.value = e.target.value.slice(0, 6);
                   }
                   const currVal = parseInt(e.target.value);
-                  setMinPay(currVal);
-                  if (currVal > maxPay) {
-                    setMaxPay(currVal + 1);
+                  setFourth(currVal);
+                  if (currVal > fifth) {
+                    setFifth(currVal + 1);
                   }
                 }}
               />
@@ -177,15 +166,15 @@ function Job() {
               <input
                 className="input"
                 type="number"
-                value={maxPay}
+                value={fifth}
                 onChange={(e) => {
                   if (e.target.value.length > 6) {
                     e.target.value = e.target.value.slice(0, 6);
                   }
                   const currVal = parseInt(e.target.value);
-                  setMaxPay(currVal);
-                  if (currVal < minPay) {
-                    setMinPay(currVal - 1);
+                  setFifth(currVal);
+                  if (currVal < fourth) {
+                    setFourth(currVal - 1);
                   }
                 }}
               />
@@ -193,13 +182,19 @@ function Job() {
                 <FontAwesomeIcon icon={faDollarSign} />
               </span>
             </div>
+            <label className="label">Description</label>
+            <textarea
+              className="input"
+              value={sixth}
+              onChange={(e) => setSixth(e.target.value)}
+            ></textarea>
           </div>
           <button className="btn white">Save changes</button>
         </form>
       ) : (
         <>
           <div className="top">
-            <h3>Job title</h3>
+            <h3>{title}</h3>
             <div className="icons">
               <span
                 onClick={() => {
@@ -208,21 +203,17 @@ function Job() {
               >
                 <FontAwesomeIcon icon={faPenToSquare} />
               </span>
-              <span>
+              <span onClick={deleteJob}>
                 <FontAwesomeIcon icon={faTrashCan} />
               </span>
             </div>
           </div>
           <div className="features">
-            <span>Location</span>
-            <span>Time</span>
-            <span>Pay</span>
+            <span>{workplace}</span>
+            <span>{work}</span>
+            <span>{minpay + " - " + maxpay + " $"}</span>
           </div>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta
-            nesciunt impedit molestiae veniam eaque doloremque, ipsa architecto
-            ratione. Voluptates minus quas libero dolor magni fugiat?
-          </p>
+          <p>{description}</p>
         </>
       )}
     </div>

@@ -1,14 +1,23 @@
 import { useEffect } from "react";
 import Job from "./Job";
 
-function PostedJobs() {
-  useEffect(() => {
-    //get jobs array from backend
-  }, []);
+function PostedJobs({ jobs }) {
   return (
     <div className="postedJobs">
-      <Job />
-      <Job />
+      {jobs
+        ? jobs.map((job) => (
+            <Job
+              id={job.docId}
+              key={job.docId}
+              title={job.title.join(" ")}
+              work={job.work}
+              workplace={job.workplace}
+              description={job.description}
+              minpay={job.minPay}
+              maxpay={job.maxPay}
+            />
+          ))
+        : null}
     </div>
   );
 }

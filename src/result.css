@@ -34,6 +34,12 @@
   flex-wrap: wrap;
   padding-top: 40px;
   padding-bottom: 40px;
+  min-height: 50vh;
+}
+.result .container h2 {
+  color: #3f3d56;
+  text-transform: uppercase;
+  align-self: center;
 }
 .result .container .job {
   width: 500px;

@@ -1,10 +1,6 @@
-import { useEffect, useState } from "react";
-function ProfileSec1({name}) {
-  const [text, setText] = useState("");
-  const [editText, setEditText] = useState("");
-  useEffect(()=>{
-    //get text from backend
-  },[])
+import { useState } from "react";
+function ProfileSec1({name,data,setData}) {
+  const [editingText, setEditingText] = useState("");
   function handleChanges() {}
   return (
     <div className={`${name} sec`}>
@@ -13,24 +9,24 @@ function ProfileSec1({name}) {
         <button
           className="btn"
           onClick={() => {
-            if (editText) handleChanges();
-            setEditText(!editText);
+            if (editingText) handleChanges();
+            setEditingText(!editingText);
           }}
         >
-          {editText ? "save" : text ? "Edit" : "Add"}
+          {editingText ? "save" : data ? "Edit" : "Add"}
         </button>
       </div>
       <div className="content">
-        {editText ? (
+        {editingText ? (
           <textarea
             className="input"
-            value={text}
+            value={data}
             onChange={(e) => {
-              setText(e.target.value);
+              setData(e.target.value);
             }}
           ></textarea>
-        ) : text ? (
-          <p>{text}</p>
+        ) : data ? (
+          <p>{data}</p>
         ) : (
           "No information added"
         )}

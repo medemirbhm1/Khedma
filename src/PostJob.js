@@ -4,7 +4,7 @@ import "./postJob.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDollarSign } from "@fortawesome/free-solid-svg-icons";
 import { database } from "./firebase";
-import { addDoc, collection } from "firebase/firestore";
+import { setDoc,doc } from "firebase/firestore";
 import { selectUser } from "./features/userSlice";
 import { useSelector } from "react-redux";
 
@@ -20,6 +20,16 @@ function PostJob() {
   const [maxPay, setMaxPay] = useState(0);
   const [completedFirst, setCompletedFirst] = useState(false);
   const [desc, setDesc] = useState("");
+  function makeid (length) {
+    var result = "";
+    var characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    var charactersLength = characters.length;
+    for (var i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  };
   function completeFirst() {
     if (title && (minPay || maxPay)) {
       setCompletedFirst(true);
@@ -29,7 +39,9 @@ function PostJob() {
   }
   function submitJob() {
     if (desc) {
-      addDoc(collection(database, "jobs"), {
+      const id = makeid(20)
+      setDoc(doc(database, "jobs", id),{
+        docId: id,
         userId: user.id,
         title: title.split(" "),
         country: user.country,
@@ -40,7 +52,7 @@ function PostJob() {
         maxPay: maxPay,
         description: desc,
         date: new Date().toLocaleDateString(),
-      }).then(() => {
+      }).then((e) => {
         navigate("/");
       });
     }
