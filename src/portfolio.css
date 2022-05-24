@@ -104,6 +104,9 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   gap: 10px;
   margin-bottom: 20px;
 }
@@ -215,6 +218,9 @@
 .portfolio .container .blue .section.docs ul li, .portfolio .container .blue .section.find ul li {
   cursor: pointer;
   position: relative;
+}
+.portfolio .container .blue .section.docs ul li a, .portfolio .container .blue .section.find ul li a {
+  color: #fff;
 }
 .portfolio .container .blue .section.docs ul li::before, .portfolio .container .blue .section.find ul li::before {
   content: "";

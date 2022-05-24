@@ -155,6 +155,13 @@
   left: 10px;
   bottom: 10px;
 }
+.profile .head .image span input {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
 .profile .head .image:hover span {
   display: -webkit-box;
   display: -ms-flexbox;

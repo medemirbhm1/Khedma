@@ -41,6 +41,7 @@ function App() {
             lName: userDoc.lastname,
             country: userDoc.country,
             city: userDoc.city,
+            job: userDoc.job,
           })
         );
       });
@@ -66,7 +67,7 @@ function App() {
             <Route path="/PostAJob" element={<PostJob />} />
             <Route path="/Profile" element={<Profile />} />
             <Route path="/Settings" element={<Settings />} />
-            <Route path="/Portfolio" element={<Portfolio />} />
+            <Route path="/Portfolio/:id" element={<Portfolio />} />
             <Route path="/Chat" element={<Chat />} />
           </Routes>
         </Router>

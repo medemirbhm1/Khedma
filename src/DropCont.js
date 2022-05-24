@@ -44,7 +44,7 @@ function DropCont({ name }) {
         setCertificates(portfolio.certificates);
         setLanguages(portfolio.languages);
         setHobb(portfolio.hobbies);
-        setAcc(portfolio.accounts);
+        setAcc(portfolio.acc);
       });
     } else {
       getJobsDocs();
@@ -57,7 +57,7 @@ function DropCont({ name }) {
         setJobs((j) => [...j, doc.data()]);
       });
     }
-  }, []);
+  }, []);//eslint-disable-line
   function updatePortfolio() {
     const docRef = doc(database, "portfolios", user.id);
     updateDoc(docRef, {
@@ -128,7 +128,7 @@ function DropCont({ name }) {
               data={hobb}
               setData={setHobb}
             />
-            <ProfileSec3 name="Social Accounts" />
+            <ProfileSec3 name="Social Accounts" data={acc} setData={setAcc}/>
           </>
         ) : (
           <PostedJobs jobs={jobs} />

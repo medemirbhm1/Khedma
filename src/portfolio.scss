@@ -81,6 +81,7 @@
         }
         ul:not(.lg) li {
           display: flex;
+          justify-content: space-between;
           gap: 10px;
           margin-bottom: 20px;
           .info {
@@ -195,6 +196,9 @@
           ul li {
             cursor: pointer;
             position: relative;
+            a {
+              color: #fff;
+            }
             &::before {
               content: "";
               width: 0;

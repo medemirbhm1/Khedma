@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import {
   faArrowRightFromBracket,
   faBriefcase,
@@ -12,10 +12,28 @@ import { useNavigate } from "react-router-dom";
 import "./nav.css";
 import logo from "./img/logo.png";
 import profImg from "./img/image 296.png";
-import { auth } from "./firebase";
+import { auth, storage } from "./firebase";
+import { useSelector } from "react-redux";
+import { selectUser } from "./features/userSlice";
+import { getDownloadURL, ref } from "firebase/storage";
+
 function Nav() {
   const navigate = useNavigate();
   const menuRef = useRef();
+  const user = useSelector(selectUser);
+  const [imgLink, setImgLink] = useState("");
+  useEffect(() => {
+    const imgRef = ref(storage, "images/" + user.id);
+    getDownloadURL(imgRef)
+      .then((r) => {
+        setImgLink(r);
+      })
+      .catch(() =>
+        setImgLink(
+          "https://i1.wp.com/www.baytekent.com/wp-content/uploads/2016/12/facebook-default-no-profile-pic1.jpg?fit=1100%2C1100&ssl=1"
+        )
+      );
+  }, []);
   return (
     <nav>
       <div className="container">
@@ -35,8 +53,8 @@ function Nav() {
               navigate("/Profile");
             }}
           >
-            <img src={profImg} alt="" />
-            <span>Houssem28</span>
+            <img src={imgLink} alt="" />
+            <span> {user.fName + " " + user.lName}</span>
           </button>
           <button
             className="chat btn"

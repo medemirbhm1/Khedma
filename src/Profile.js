@@ -1,12 +1,35 @@
 import { faCamera } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./profile.css";
-import img from "./img/267513079_1346936529074555_5231013764367827969_n 3.png";
 import Nav from "./Nav";
 import { useNavigate } from "react-router-dom";
 import DropCont from "./DropCont";
+import { useEffect, useRef, useState } from "react";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { storage } from "./firebase";
+import { useSelector } from "react-redux";
+import { selectUser } from "./features/userSlice";
 function Profile() {
   const navigate = useNavigate();
+  const [imgLink, setImgLink] = useState("");
+  const inpRef = useRef();
+  const user = useSelector(selectUser);
+  useEffect(() => {
+    const imgRef = ref(storage, "images/" + user.id);
+    getDownloadURL(imgRef)
+      .then((r) => {
+        setImgLink(r);
+      })
+      .catch(() =>
+        setImgLink(
+          "https://i1.wp.com/www.baytekent.com/wp-content/uploads/2016/12/facebook-default-no-profile-pic1.jpg?fit=1100%2C1100&ssl=1"
+        )
+      );
+  }, []);//eslint-disable-line
+  function uploadImg() {
+    const imgRef = ref(storage, "images/" + user.id);
+    uploadBytes(imgRef, inpRef.current.files[0]);
+  }
   return (
     <>
       <Nav />
@@ -14,20 +37,21 @@ function Profile() {
         <div className="container">
           <div className="head sec">
             <div className="image">
-              <img src={img} alt="" />
+              <img src={imgLink} alt="" />
               <span className="edit">
+                <input ref={inpRef} type="file" onChange={uploadImg} />
                 <FontAwesomeIcon icon={faCamera} />
               </span>
             </div>
             <div className="text">
-              <h2>Houcem Mansour</h2>
-              <h3>Full Stack Web Developer / UX Designer</h3>
+              <h2>{user.fName + " " + user.lName}</h2>
+              <h3>{user.job.join(" ")}</h3>
               <div className="btns">
                 <button
                   type="button"
                   className="btn white"
                   onClick={() => {
-                    navigate("/portfolio");
+                    navigate("/portfolio/" + user.id);
                   }}
                 >
                   View your portfolio
@@ -44,8 +68,8 @@ function Profile() {
               </div>
             </div>
           </div>
-          <DropCont name="Portfolio Content"/>
-          <DropCont name="Posted jobs"/>
+          <DropCont name="Portfolio Content" />
+          <DropCont name="Posted jobs" />
         </div>
       </div>
     </>

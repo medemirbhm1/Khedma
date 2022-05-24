@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import idImg from "./img/267513079_1346936529074555_5231013764367827969_n 3.png";
 import ellipse from "./img/Ellipse 22.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -17,11 +17,34 @@ import stary from "./img/Star 1.svg";
 import starg from "./img/Star 5.svg";
 import { faFacebook, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import "./portfolio.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import RatingSet from "./RatingSet";
+import { doc, getDoc } from "firebase/firestore";
+import { database, storage } from "./firebase";
+import { getDownloadURL, ref } from "firebase/storage";
 function Portfolio() {
   const navigate = useNavigate();
-  return (
+  const [user, setUser] = useState(null);
+  const [portfolio, setPortfolio] = useState(null);
+  const [imgLink, setImgLink] = useState("");
+  const params = useParams();
+  useEffect(() => {
+    const portfolioRef = doc(database, "portfolios", params.id);
+    const userRef = doc(database, "users", params.id);
+    getDoc(userRef).then((r) => setUser(r.data()));
+    getDoc(portfolioRef).then((r) => setPortfolio(r.data()));
+    const imgRef = ref(storage, "images/" + params.id);
+    getDownloadURL(imgRef)
+      .then((r) => {
+        setImgLink(r);
+      })
+      .catch(() =>
+        setImgLink(
+          "https://i1.wp.com/www.baytekent.com/wp-content/uploads/2016/12/facebook-default-no-profile-pic1.jpg?fit=1100%2C1100&ssl=1"
+        )
+      );
+  }, []);
+  return user && portfolio ? (
     <div className="portfolio">
       <div className="container">
         <span className="goHome" onClick={() => navigate("/")}>
@@ -30,14 +53,14 @@ function Portfolio() {
         <div className="white">
           <div className="card">
             <div className="avatar">
-              <img src={idImg} alt="" />
+              <img src={imgLink} alt="" />
               <img src={ellipse} alt="" />
             </div>
             <div className="text">
               <h2>
-                Houcem <span>Mansour</span>
+                {user.firstname} <span>{user.lastname}</span>
               </h2>
-              <div className="job">Full stack web dev &#38; UI/UX Designer</div>
+              <div className="job">{user.job.join(" ")}</div>
               <ul className="infos">
                 <li>
                   <FontAwesomeIcon icon={faPhoneSquare} />
@@ -45,11 +68,11 @@ function Portfolio() {
                 </li>
                 <li>
                   <FontAwesomeIcon icon={faEnvelope} />
-                  <span>h.mansour@esi-sba.dz</span>
+                  <span>{user.Email}</span>
                 </li>
                 <li>
                   <FontAwesomeIcon icon={faLocationDot} />
-                  <span>Msila, Algeria</span>
+                  <span>{user.country + ", " + user.city}</span>
                 </li>
               </ul>
             </div>
@@ -62,30 +85,19 @@ function Portfolio() {
               <h3>Education</h3>
             </div>
             <ul>
-              <li>
-                <div className="info">
-                  <h4>Full stack web development</h4>
-                  <h5>Private school</h5>
-                  <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Labore in provident nemo minus? Aspernatur nobis doloribus,
-                    eaque rem fugiat deleniti.
-                  </p>
-                </div>
-                <span className="period">08/2021-Present</span>
-              </li>
-              <li>
-                <div className="info">
-                  <h4>Full stack web development</h4>
-                  <h5>Private school</h5>
-                  <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Labore in provident nemo minus? Aspernatur nobis doloribus,
-                    eaque rem fugiat deleniti.
-                  </p>
-                </div>
-                <span className="period">08/2021-Present</span>
-              </li>
+              {portfolio.education.map((q) => (
+                <li className="info" key={q.fourth}>
+                  <div className="info">
+                    <h4>{q.first}</h4>
+                    <h5>{q.second}</h5>
+                    <p>{q.fifth}</p>
+                  </div>
+                  <span className="period">
+                    {q.third + " -"} <br />
+                    {q.fourth}
+                  </span>
+                </li>
+              ))}
             </ul>
           </div>
           <div className="projects section">
@@ -96,19 +108,19 @@ function Portfolio() {
               <h3>Projects</h3>
             </div>
             <ul>
-              <li>
-                <div className="info">
-                  <h4>Website</h4>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Asperiores veniam provident sunt corporis! Deserunt
-                    recusandae consectetur error tenetur tempore necessitatibus
-                    optio? Quasi necessitatibus rerum rem pariatur recusandae
-                    molestias quas laudantium!
-                  </p>
-                </div>
-                <span className="period">08/2021-Present</span>
-              </li>
+              {portfolio.projects.map((q) => (
+                <li className="info" key={q.fourth}>
+                  <div className="info">
+                    <h4>{q.first}</h4>
+                    <h5>{q.second}</h5>
+                    <p>{q.fifth}</p>
+                  </div>
+                  <span className="period">
+                    {q.third + " -"} <br />
+                    {q.fourth}
+                  </span>
+                </li>
+              ))}
             </ul>
           </div>
           <div className="work section">
@@ -119,20 +131,19 @@ function Portfolio() {
               <h3>Work experience</h3>
             </div>
             <ul>
-              <li>
-                <div className="info">
-                  <h4>Senior web developer</h4>
-                  <h5>esi-sba</h5>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Asperiores veniam provident sunt corporis! Deserunt
-                    recusandae consectetur error tenetur tempore necessitatibus
-                    optio? Quasi necessitatibus rerum rem pariatur recusandae
-                    molestias quas laudantium!
-                  </p>
-                </div>
-                <span className="period">08/2021-Present</span>
-              </li>
+              {portfolio.workExp.map((q) => (
+                <li className="info" key={q.fourth}>
+                  <div className="info">
+                    <h4>{q.first}</h4>
+                    <h5>{q.second}</h5>
+                    <p>{q.fifth}</p>
+                  </div>
+                  <span className="period">
+                    {q.third + " -"} <br />
+                    {q.fourth}
+                  </span>
+                </li>
+              ))}
             </ul>
           </div>
           <div className="hobb section">
@@ -142,11 +153,7 @@ function Portfolio() {
               </span>
               <h3>Hobbies and interests</h3>
             </div>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit
-              perspiciatis quod distinctio earum voluptates velit dolore
-              sapiente impedit iste alias.
-            </p>
+            <p>{portfolio.hobb}</p>
           </div>
           <div className="lang section">
             <div className="head">
@@ -156,66 +163,53 @@ function Portfolio() {
               <h3>Langauges</h3>
             </div>
             <ul className="lg">
-              <li>Arabic</li>
-              <li>English</li>
+              {portfolio.languages.map((d) => (
+                <li>{d.first}</li>
+              ))}
             </ul>
           </div>
         </div>
         <div className="blue">
           <div className="about section">
             <h4>About</h4>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuriesdummy text ever since the 1500s,
-              when an unknown printer took a galley of type and scrambled it to
-              make a type specimen book. It has survived not only five
-              centuries.
-            </p>
+            <p>{portfolio.about}</p>
           </div>
           <div className="skills section">
             <h4>Skills</h4>
             <ul>
-              <li>
-                <span>HTML</span>
-                <RatingSet rating={4} />
-              </li>
-              <li>
-                <span>CSS</span>
-                <RatingSet rating={4} />
-              </li>
-              <li>
-                <span>JS</span>
-                <RatingSet rating={5} />
-              </li>
+              {portfolio.skills.map((s) => (
+                <li>
+                  <span>{s.first}</span>
+                  <RatingSet rating={s.second} />
+                </li>
+              ))}
             </ul>
           </div>
           <div className="docs section">
             <h4>Docs</h4>
             <ul>
-              <li>CV</li>
-              <li>BAC Certificate</li>
+              {portfolio.certificates.map((d) => (
+                <li>
+                  <a href={d.second} target="_blank">{d.first}</a>
+                </li>
+              ))}
             </ul>
           </div>
           <div className="find section">
             <h4>Find me</h4>
             <ul>
-              <li>
-                <FontAwesomeIcon icon={faFacebook} />
-                facebook.com/MansourHoucem
-              </li>
-              <li>
-                <FontAwesomeIcon icon={faTwitter} />
-                twitter.com/MansourHoucem
-              </li>
+              {/* {portfolio.acc.map((d) => (
+                <li>
+                  <a href={d.second} target="_blank">{d.first}</a>
+                </li>
+              ))} */}
             </ul>
           </div>
         </div>
       </div>
     </div>
+  ) : (
+    ""
   );
 }
-
 export default Portfolio;

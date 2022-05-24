@@ -16,6 +16,8 @@ import { auth } from "./firebase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
+
+
 function SignUp() {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
@@ -103,11 +105,9 @@ function SignUp() {
           certificates: [],
           languages: [],
           hobbies: "",
-          accounts: [],
+          acc: [],
         });
       });
-      alert("user created");
-      console.log(user);
     } catch (error) {
       console.log(error.message);
     }
@@ -138,8 +138,6 @@ function SignUp() {
           create_date: new Date().toLocaleDateString(),
         });
       });
-      alert("user created");
-      console.log(user);
     } catch (error) {
       console.log(error.message);
     }
