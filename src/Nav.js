@@ -11,7 +11,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import "./nav.css";
 import logo from "./img/logo.png";
-import profImg from "./img/image 296.png";
 import { auth, storage } from "./firebase";
 import { useSelector } from "react-redux";
 import { selectUser } from "./features/userSlice";

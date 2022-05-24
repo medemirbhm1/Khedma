@@ -10,15 +10,11 @@ import PostJob from "./PostJob";
 import Profile from "./Profile";
 import Settings from "./Settings";
 import { auth, database } from "./firebase";
-import {
-  doc,
-  getDoc,
-} from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { useDispatch } from "react-redux";
 import { login, logout, selectUser } from "./features/userSlice";
 import { useSelector } from "react-redux";
 import Portfolio from "./Portfolio";
-import Chat from "./Chat";
 function App() {
   let user = useSelector(selectUser);
   const dispatch = useDispatch();
@@ -68,7 +64,7 @@ function App() {
             <Route path="/Profile" element={<Profile />} />
             <Route path="/Settings" element={<Settings />} />
             <Route path="/Portfolio/:id" element={<Portfolio />} />
-            <Route path="/Chat" element={<Chat />} />
+            <Route path="/Chat" />
           </Routes>
         </Router>
       )}

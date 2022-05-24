@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import idImg from "./img/267513079_1346936529074555_5231013764367827969_n 3.png";
 import ellipse from "./img/Ellipse 22.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,8 +12,6 @@ import {
   faPhoneSquare,
 } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
-import stary from "./img/Star 1.svg";
-import starg from "./img/Star 5.svg";
 import { faFacebook, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import "./portfolio.css";
 import { useNavigate, useParams } from "react-router-dom";
@@ -190,7 +187,9 @@ function Portfolio() {
             <ul>
               {portfolio.certificates.map((d) => (
                 <li>
-                  <a href={d.second} target="_blank">{d.first}</a>
+                  <a href={d.second} target="_blank">
+                    {d.first}
+                  </a>
                 </li>
               ))}
             </ul>
