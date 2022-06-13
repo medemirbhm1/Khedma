@@ -60,10 +60,6 @@ function Portfolio() {
               <div className="job">{user.job.join(" ")}</div>
               <ul className="infos">
                 <li>
-                  <FontAwesomeIcon icon={faPhoneSquare} />
-                  <span>+213552411532</span>
-                </li>
-                <li>
                   <FontAwesomeIcon icon={faEnvelope} />
                   <span>{user.Email}</span>
                 </li>

@@ -42,6 +42,7 @@ function PostJob() {
       const id = makeid(20)
       setDoc(doc(database, "jobs", id),{
         docId: id,
+        email: user.email,
         userId: user.id,
         title: title.split(" "),
         country: user.country,

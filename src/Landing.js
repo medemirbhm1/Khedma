@@ -6,7 +6,6 @@ import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import landImg from "./img/business-3d-recruiter-found-an-employee.png";
 import aboutImg from "./img/business-3d-325.png";
 import featImg1 from "./img/Icon.svg";
-import featImg2 from "./img/Icon (2).svg";
 import featImg3 from "./img/Icon (3).svg";
 import featImg4 from "./img/Icon (4).svg";
 import ourApp1 from "./img/app1.png";
@@ -34,10 +33,10 @@ function Landing() {
         {/* NAVBAR */}
         <nav>
           <div className="container">
-            <button href="/" className="logo">
+            <div className="logo" onClick={() => navigate("/")}>
               <img src={logo} alt="logo" />
               Khedma
-            </button>
+            </div>
             <ul className="links" ref={links}>
               <li>
                 <a href="/">Home</a>
@@ -110,13 +109,6 @@ function Landing() {
               <div className="text">
                 <h3>Connections</h3>
                 <p>Connect with people and expand your network.</p>
-              </div>
-            </div>
-            <div className="card">
-              <img src={featImg2} alt="" />
-              <div className="text">
-                <h3>Chat</h3>
-                <p>Text and video chat are available.</p>
               </div>
             </div>
             <div className="card">
@@ -220,10 +212,6 @@ function Landing() {
           <img src={phoneImg} alt="" />
         </div>
       </div>
-      <footer>
-        <img src={logo} alt="logo" />
-        Khedma
-      </footer>
     </div>
   );
 }

@@ -87,6 +87,9 @@
   padding: 10px 16px;
   background-color: #217bf4;
 }
+.result .container .btn-cont .btn a {
+  color: #fff;
+}
 .result .container .person {
   width: 500px;
   max-width: 95%;
@@ -120,6 +123,7 @@
   width: 80px;
   height: 80px;
   border-radius: 50%;
+  cursor: pointer;
 }
 .result .container .person .jtitle {
   margin: 5px 0;
@@ -134,4 +138,7 @@
 .result .container .person .description {
   line-height: 1.4;
   margin-bottom: 15px;
+}
+.result .container .person .btn a {
+  color: #fff;
 }

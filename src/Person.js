@@ -37,13 +37,21 @@ function Person({ user }) {
           <img
             className="avatar"
             src={imgLink}
-            onClick={() => navigate("/Portfolio/" + user.id)}
+            onClick={() => {
+              if (user.isComp) {
+                navigate("/Company/" + user.id);
+              } else {
+                navigate("/Portfolio/" + user.id);
+              }
+            }}
             alt=""
           />
         </div>
         <div className="description">{about}</div>
         <div className="btn-cont">
-          <button className="btn">Visit Profile</button>
+          <button className="btn">
+            <a href={"mailto: " + user.Email}>Contact</a>
+          </button>
         </div>
       </div>
     </div>

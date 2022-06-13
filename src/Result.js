@@ -53,7 +53,9 @@ function Result({ users, jobs }) {
                   </div>
                   <div className="description">{job.description}</div>
                   <div className="btn-cont">
-                    <div className="btn">contact</div>
+                    <button className="btn">
+                      <a href={"mailto: " + job.email}>Contact</a>
+                    </button>
                   </div>
                 </div>
               ))

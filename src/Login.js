@@ -23,7 +23,7 @@ function Login() {
       );
       alert("email valide");
       console.log(user);
-      navigate("/")
+      navigate("/");
     } catch (error) {
       alert(" existe pas");
       console.log(error.message);
@@ -34,10 +34,10 @@ function Login() {
     <div className="login">
       <nav>
         <div className="container">
-          <button className="logo" onClick={() => navigate("/")}>
+          <div className="logo" onClick={() => navigate("/")}>
             <img src={logo} alt="logo" />
             Khedma
-          </button>
+          </div>
         </div>
       </nav>
       <form>

@@ -20,12 +20,18 @@ function Profile() {
       .then((r) => {
         setImgLink(r);
       })
-      .catch(() =>
-        setImgLink(
-          "https://i1.wp.com/www.baytekent.com/wp-content/uploads/2016/12/facebook-default-no-profile-pic1.jpg?fit=1100%2C1100&ssl=1"
-        )
-      );
-  }, []);//eslint-disable-line
+      .catch(() => {
+        if (user.isComp) {
+          setImgLink(
+            "https://icons-for-free.com/download-icon-default+home+house+main+page+icon-1320186211000235547_512.png"
+          );
+        } else {
+          setImgLink(
+            "https://i1.wp.com/www.baytekent.com/wp-content/uploads/2016/12/facebook-default-no-profile-pic1.jpg?fit=1100%2C1100&ssl=1"
+          );
+        }
+      });
+  }, []); //eslint-disable-line
   function uploadImg() {
     const imgRef = ref(storage, "images/" + user.id);
     uploadBytes(imgRef, inpRef.current.files[0]);
@@ -44,14 +50,18 @@ function Profile() {
               </span>
             </div>
             <div className="text">
-              <h2>{user.fName + " " + user.lName}</h2>
-              <h3>{user.job.join(" ")}</h3>
+              <h2>{user.isComp ? user.name : user.fName + " " + user.lName}</h2>
+              <h3>{!user.isComp && user.job.join(" ")}</h3>
               <div className="btns">
                 <button
                   type="button"
                   className="btn white"
                   onClick={() => {
-                    navigate("/portfolio/" + user.id);
+                    if (user.isComp) {
+                      navigate("/company/" + user.id);
+                    } else {
+                      navigate("/portfolio/" + user.id);
+                    }
                   }}
                 >
                   View your portfolio

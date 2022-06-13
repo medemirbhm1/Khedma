@@ -17,7 +17,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 
-
 function SignUp() {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
@@ -79,10 +78,8 @@ function SignUp() {
         console.log(userCredential);
         const user = userCredential.user;
         var token = await user.getIdToken();
-
         console.log(token);
         confirmemail(token);
-
         setDoc(doc(database, "users", user.uid), {
           id: user.uid,
           isComp: false,
@@ -93,6 +90,7 @@ function SignUp() {
           birthday: registerbirthday,
           country: registerCountry,
           city: registerCity,
+          phone: "",
           create_date: new Date().getTime(),
           date: new Date().getDate(),
         }).then(() => navigate("/"));
@@ -119,25 +117,34 @@ function SignUp() {
         auth,
         registerEmail,
         registerPassword
-      ).then(async (userCredential) => {
-        const user = userCredential.user;
-        var token = await user.getIdToken();
+      )
+        .then(async (userCredential) => {
+          const user = userCredential.user;
+          var token = await user.getIdToken();
 
-        console.log(token);
+          console.log(token);
 
-        confirmemail(token);
-        console.log(userCredential);
+          confirmemail(token);
+          console.log(userCredential);
 
-        setDoc(doc(database, "users", user.uid), {
-          Email: user.email,
-          isComp: true,
-          companyname: registerlastname,
-          country: [registerCountry],
-          city: [registerCity],
-          date_de_creation: registerbirthday,
-          create_date: new Date().toLocaleDateString(),
-        });
-      });
+          setDoc(doc(database, "users", user.uid), {
+            Email: user.email,
+            isComp: true,
+            companyname: registerfirstname,
+            country: [registerCountry],
+            city: [registerCity],
+            date_de_creation: registerbirthday,
+            create_date: new Date().toLocaleDateString(),
+          });
+          setDoc(doc(database, "companies", user.uid), {
+            about: "",
+            size: 0,
+            ceo: "",
+            revenue: 0,
+            field: "",
+          });
+        })
+        .then(() => navigate("/"));
     } catch (error) {
       console.log(error.message);
     }
@@ -307,7 +314,7 @@ function SignUp() {
                   onClick={() => {
                     if (
                       registerfirstname &&
-                      registerlastname &&
+                      (registerlastname || comp) &&
                       registerEmail &&
                       registerPassword
                     ) {

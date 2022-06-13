@@ -1,0 +1,99 @@
+.company .container {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.company .container .head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.company .container .head img {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+}
+.company .container .head .text {
+  margin-left: 50px;
+}
+.company .container .head .text h1 {
+  font-size: 40px;
+  color: #3f3d56;
+  margin-bottom: 20px;
+}
+.company .container .head .text ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 15px;
+  gap: 20px;
+  color: #666666;
+}
+.company .container .head .return {
+  margin-left: auto;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  background-color: transparent;
+  border: 0;
+  color: #217bf4;
+  font-size: 40px;
+  cursor: pointer;
+}
+.company .container .about {
+  margin: 40px 0;
+}
+.company .container .about h2 {
+  font-size: 30px;
+  color: #217bf4;
+}
+.company .container .about p {
+  margin-left: 10px;
+  color: #4a4b4d;
+  margin-top: 10px;
+}
+.company .container > .infos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.company .container > .infos .card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+          box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  width: 200px;
+  height: 250px;
+  border-radius: 5px;
+  font-weight: 500;
+  text-align: center;
+  padding: 10px;
+}
+.company .container > .infos .card .icon {
+  font-size: 40px;
+  color: #217bf4;
+  margin-bottom: 10px;
+}
+.company .container > .infos .card span:nth-child(2) {
+  color: #3f3d56;
+  font-weight: 600;
+  font-size: 22px;
+}

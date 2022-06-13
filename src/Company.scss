@@ -1,0 +1,76 @@
+.company .container {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  .head {
+    display: flex;
+    align-items: center;
+    img {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+    }
+    .text {
+      margin-left: 50px;
+      h1 {
+        font-size: 40px;
+        color: #3f3d56;
+        margin-bottom: 20px;
+      }
+      ul li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        gap: 20px;
+        color: #666666;
+      }
+    }
+    .return {
+      margin-left: auto;
+      align-self: flex-start;
+      background-color: transparent;
+      border: 0;
+      color: #217bf4;
+      font-size: 40px;
+      cursor: pointer;
+    }
+  }
+  .about {
+    margin: 40px 0;
+    h2 {
+      font-size: 30px;
+      color: #217bf4;
+    }
+    p {
+      margin-left: 10px;
+      color: #4a4b4d;
+      margin-top: 10px;
+    }
+  }
+  > .infos {
+    display: flex;
+    justify-content: space-between;
+    .card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      width: 200px;
+      height: 250px;
+      border-radius: 5px;
+      font-weight: 500;
+      text-align: center;
+      padding: 10px;
+      .icon {
+          font-size: 40px;
+          color: #217bf4;
+          margin-bottom: 10px;
+        }
+        span:nth-child(2) {
+          color: #3f3d56;
+          font-weight: 600;
+          font-size: 22px;
+      }
+    }
+  }
+}

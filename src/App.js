@@ -15,6 +15,7 @@ import { useDispatch } from "react-redux";
 import { login, logout, selectUser } from "./features/userSlice";
 import { useSelector } from "react-redux";
 import Portfolio from "./Portfolio";
+import Company from "./Company";
 function App() {
   let user = useSelector(selectUser);
   const dispatch = useDispatch();
@@ -29,17 +30,32 @@ function App() {
       const docRef = doc(database, "users", userAuth.uid);
       getDoc(docRef).then((doc) => {
         const userDoc = doc.data();
-        dispatch(
-          login({
-            id: userAuth.uid,
-            email: userAuth.email,
-            fName: userDoc.firstname,
-            lName: userDoc.lastname,
-            country: userDoc.country,
-            city: userDoc.city,
-            job: userDoc.job,
-          })
-        );
+        if (!userDoc.isComp) {
+          dispatch(
+            login({
+              id: userAuth.uid,
+              email: userAuth.email,
+              fName: userDoc.firstname,
+              lName: userDoc.lastname,
+              country: userDoc.country,
+              city: userDoc.city,
+              job: userDoc.job,
+              isComp: userDoc.isComp,
+            })
+          );
+        } else {
+          dispatch(
+            login({
+              id: userAuth.uid,
+              email: userAuth.email,
+              name: userDoc.companyname,
+              country: userDoc.country,
+              city: userDoc.city,
+              job: userDoc.job,
+              isComp: userDoc.isComp,
+            })
+          );
+        }
       });
     } else {
       dispatch(logout());
@@ -64,7 +80,7 @@ function App() {
             <Route path="/Profile" element={<Profile />} />
             <Route path="/Settings" element={<Settings />} />
             <Route path="/Portfolio/:id" element={<Portfolio />} />
-            <Route path="/Chat" />
+            <Route path="/Company/:id" element={<Company />} />
           </Routes>
         </Router>
       )}

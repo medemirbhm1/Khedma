@@ -39,6 +39,22 @@
 .gradient-bg {
   background: linear-gradient(to top left, #d4e7fe 0, #fff 100%);
 }
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #217bf4;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+.logo img {
+  width: 44px;
+  height: 100px;
+}
 /* components end */
 /* variables end  */
 

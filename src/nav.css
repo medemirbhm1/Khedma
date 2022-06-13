@@ -2,6 +2,7 @@ nav .container {
   justify-content: space-between;
   position: relative;
 }
+
 nav .btns {
   display: flex;
   align-items: center;

@@ -19,6 +19,9 @@
   font-family: inherit;
   margin-bottom: 0;
 }
+.profile .companyform {
+  margin-left: 30px;
+}
 .profile .sec {
   padding: 30px;
   margin-bottom: 50px;
