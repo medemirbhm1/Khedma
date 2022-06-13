@@ -101,7 +101,14 @@ function DropCont({ name }) {
   return (
     <div className="prContent">
       <div className="ctrl">
-        <h2>{name}</h2>
+        <h2>
+          {" "}
+          {name === "Portfolio Content"
+            ? user.isComp
+              ? "Company profile"
+              : "Portfolio Content"
+            : "Posted jobs"}
+        </h2>
         <span onClick={handleDropdown} ref={chevRef}>
           <FontAwesomeIcon icon={faChevronDown} />
         </span>

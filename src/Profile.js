@@ -64,7 +64,7 @@ function Profile() {
                     }
                   }}
                 >
-                  View your portfolio
+                  {user.isComp ? "Company profile" : "View your portfolio"}
                 </button>
                 <button
                   type="button"
