@@ -1,10 +1,7 @@
-import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useEffect, useState } from "react";
 import "./result.css";
-import { faDollarSign, faLocationDot } from "@fortawesome/free-solid-svg-icons";
-import { faClockFour } from "@fortawesome/free-regular-svg-icons";
 import Person from "./Person";
-
+import Joba from "./Joba";
 function Result({ users, jobs }) {
   const [chosen, setChosen] = useState(false);
   return (
@@ -31,34 +28,7 @@ function Result({ users, jobs }) {
         {chosen ? (
           <>
             {jobs.length ? (
-              jobs.map((job) => (
-                <div className="job" key={job.userId}>
-                  <div className="title">{job.title.join(" ")}</div>
-                  <div className="name">{job.country + ", " + job.city}</div>
-                  <div className="details">
-                    <div className="det">
-                      <FontAwesomeIcon icon={faDollarSign} />
-                      <div className="text">
-                        {job.minPay + " - " + job.maxPay}
-                      </div>
-                    </div>
-                    <div className="det">
-                      <FontAwesomeIcon icon={faLocationDot} />
-                      <div className="text">{job.workplace}</div>
-                    </div>
-                    <div className="det">
-                      <FontAwesomeIcon icon={faClockFour} />
-                      <div className="text">{job.work}</div>
-                    </div>
-                  </div>
-                  <div className="description">{job.description}</div>
-                  <div className="btn-cont">
-                    <button className="btn">
-                      <a href={"mailto: " + job.email}>Contact</a>
-                    </button>
-                  </div>
-                </div>
-              ))
+              jobs.map((job) => <Joba job={job} />)
             ) : (
               <h2>nothing found !</h2>
             )}

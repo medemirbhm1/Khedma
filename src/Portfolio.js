@@ -193,11 +193,13 @@ function Portfolio() {
           <div className="find section">
             <h4>Find me</h4>
             <ul>
-              {/* {portfolio.acc.map((d) => (
+              {portfolio.acc.map((d) => (
                 <li>
-                  <a href={d.second} target="_blank">{d.first}</a>
+                  <a href={d.second} target="_blank">
+                    {d.first}
+                  </a>
                 </li>
-              ))} */}
+              ))}
             </ul>
           </div>
         </div>

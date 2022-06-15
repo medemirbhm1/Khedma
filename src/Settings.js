@@ -27,12 +27,20 @@ function Settings() {
 
   const navigate = useNavigate("");
   const updateUserInfo = async (user) => {
-    updateDoc(doc(database, "users", user.uid), {
-      firstname: fName ? fName : currentUser.fName,
-      lastname: lName ? lName : currentUser.lName,
-      city: region ? region : currentUser.city,
-      country: country ? country : currentUser.country,
-    });
+    if (!currentUser.isComp) {
+      updateDoc(doc(database, "users", user.uid), {
+        firstname: fName ? fName : currentUser.fName,
+        lastname: lName ? lName : currentUser.lName,
+        city: region ? region : currentUser.city,
+        country: country ? country : currentUser.country,
+      });
+    } else {
+      updateDoc(doc(database, "users", user.uid), {
+        companyname: fName ? fName : currentUser.name,
+        city: region ? region : currentUser.city,
+        country: country ? country : currentUser.country,
+      });
+    }
   };
 
   function updateUser() {
@@ -176,7 +184,9 @@ function Settings() {
           <div className="left">
             <h2>Settings</h2>
             <div className="cont">
-              <label className="label">First name</label>
+              <label className="label">
+                {currentUser.isComp ? "Company name" : "First name"}
+              </label>
               <input
                 type="text"
                 className="input"
@@ -186,17 +196,19 @@ function Settings() {
                 }}
               />
             </div>
-            <div className="cont">
-              <label className="label">Last name</label>
-              <input
-                type="text"
-                className="input"
-                value={lName}
-                onChange={(event) => {
-                  setLname(event.target.value);
-                }}
-              />
-            </div>
+            {!currentUser.isComp && (
+              <div className="cont">
+                <label className="label">Last name</label>
+                <input
+                  type="text"
+                  className="input"
+                  value={lName}
+                  onChange={(event) => {
+                    setLname(event.target.value);
+                  }}
+                />
+              </div>
+            )}
             {/* <div className="cont mrg">
               <label className="label">Phone</label>
               <PhoneInput

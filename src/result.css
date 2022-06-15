@@ -41,6 +41,17 @@
   text-transform: uppercase;
   align-self: center;
 }
+.result .container .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.result .container .top img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  cursor: pointer;
+}
 .result .container .job {
   width: 500px;
   max-width: 95%;

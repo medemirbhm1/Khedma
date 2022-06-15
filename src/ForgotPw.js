@@ -30,17 +30,15 @@ function ForgotPw() {
         "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyD9KDPcDyMAPzHrK8QO20Ibs2pt3JoybyQ",
         requestOptions
       )
-        .then((response) => response.text())
+        .then((response) => {
+          response.text();
+        })
         .then((result) => {
           console.log(result);
         })
         .catch((error) => {
           console.log("error", error);
         });
-
-      console.log(email);
-
-      console.log(response);
     } catch (error) {
       alert(" existe pas");
       console.log(error.message);
@@ -58,8 +56,8 @@ function ForgotPw() {
       </nav>
       <form
         onSubmit={(e) => {
-          e.preventDefault()
-          email ? forgotpass(e): alert("Please type your email");
+          e.preventDefault();
+          email ? forgotpass(e) : alert("Please type your email");
         }}
       >
         <div className="container">

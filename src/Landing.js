@@ -13,7 +13,12 @@ import ourApp2 from "./img/app2.png";
 import phoneImg from "./img/mobile muckup.svg";
 import "./landing.css";
 import { useNavigate } from "react-router-dom";
-
+import ellipse from "./img/Abstrack.png";
+import me from "./img/me.jpg";
+import adel from "./img/adel.jpg";
+import zaki from "./img/zaki.jpg";
+import houssem from "./img/houssem.jpg";
+import moh from "./img/moh.jpg";
 function Landing() {
   const navigate = useNavigate();
   const links = useRef();
@@ -196,6 +201,46 @@ function Landing() {
               Send
             </button>
           </form>
+        </div>
+      </div>
+      <div className="createdby sec">
+        <h2>Created by</h2>
+        <div className="container">
+          <div className="person">
+            <div className="image">
+              <img src={me} alt="" />
+              <img src={ellipse} alt="" />
+            </div>
+            <div className="name">Med Emir Bouhamar</div>
+          </div>
+          <div className="person">
+            <div className="image">
+              <img src={houssem} alt="" />
+              <img src={ellipse} alt="" />
+            </div>
+            <div className="name">Houssem Mansour</div>
+          </div>
+          <div className="person">
+            <div className="image">
+              <img src={zaki} alt="" />
+              <img src={ellipse} alt="" />
+            </div>
+            <div className="name">Zakaria Rehiel</div>
+          </div>
+          <div className="person">
+            <div className="image">
+              <img src={moh} alt="" />
+              <img src={ellipse} alt="" />
+            </div>
+            <div className="name">Mohamed Belhadj</div>
+          </div>
+          <div className="person">
+            <div className="image">
+              <img src={adel} alt="" />
+              <img src={ellipse} alt="" />
+            </div>
+            <div className="name">Adel Allani</div>
+          </div>
         </div>
       </div>
       <div className="ourapp">
